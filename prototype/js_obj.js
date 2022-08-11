@@ -44,3 +44,23 @@ console.log(person3Obj);
 
 person3Obj.cn2("cdddd");
 console.log(person3Obj);
+
+console.log("person4 -----------")
+function person4(firstname,lastname,age,eyecolor)
+{
+    this.firstname=firstname;
+    this.lastname=lastname;
+    this.age=age;
+    this.eyecolor=eyecolor;
+    return [this.firstname,this.lastname,this.age,this.eyecolor,this]
+}
+
+var myFather=new person4("John","Doe",50,"blue");
+var myMother=person4("Sally","Rally",48,"green");
+console.log(myFather) // this 输出一个 person 对象
+console.log(myMother) // this 输出 window 或者global 对象
+console.log(myFather[4].firstname);
+// myMother是global所以 firstname在global里也有
+console.log(myMother[4].person2);
+console.log(myMother[4].firstname);
+console.log(eyecolor)
