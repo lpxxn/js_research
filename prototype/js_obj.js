@@ -44,7 +44,7 @@ console.log(person3Obj);
 
 person3Obj.cn2("cdddd");
 console.log(person3Obj);
-
+debugger
 console.log("person4 -----------")
 function person4(firstname,lastname,age,eyecolor)
 {
