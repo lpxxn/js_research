@@ -28,4 +28,5 @@ var x5 = [];            // 新的数组对象
 var x6 = /()/           // 新的正则表达式对象
 var x7 = function(){};  // 新函数对象
 
-
+var myFunc = new Function("a", "b", "return a +b");
+console.log(myFunc(1, 2));
