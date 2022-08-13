@@ -38,10 +38,13 @@ function person3(firstname, lastname, age) {
         this.firstname = name;
     }
 }
+// 使用 prototype 为构造器添加新属性
+person3.prototype.nationality = "En"
 
 person3Obj = new person3("a", "b", 1);
 person3Obj.cn("ccc");
 console.log(person3Obj);
+console.log(person3Obj.nationality);
 person3Obj.vvv = "abcd"
 person3Obj.zzz = function () {
     console.log(this.vvv);
