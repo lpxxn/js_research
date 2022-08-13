@@ -23,7 +23,8 @@ for (x in person) {
 console.log("end x in person");
 
 // 把方法添加到 JavaScript 对象, 方法只不过是附加在对象上的函数。在构造器函数内部定义对象的方法：
-
+// 下面这种的方式叫做 对象构造器函数。
+// 通过 new 关键词调用构造器函数可以创建相同类型的对象
 function person3(firstname, lastname, age) {
     this.firstName = firstname;
     this.lastName = lastname;
@@ -41,6 +42,11 @@ function person3(firstname, lastname, age) {
 person3Obj = new person3("a", "b", 1);
 person3Obj.cn("ccc");
 console.log(person3Obj);
+person3Obj.vvv = "abcd"
+person3Obj.zzz = function () {
+    console.log(this.vvv);
+}
+person3Obj.zzz()
 
 person3Obj.cn2("cdddd");
 console.log(person3Obj);
