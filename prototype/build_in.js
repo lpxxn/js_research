@@ -30,3 +30,15 @@ var x7 = function(){};  // 新函数对象
 
 var myFunc = new Function("a", "b", "return a +b");
 console.log(myFunc(1, 2));
+
+
+function myFunction(a, b) {
+    return a * b;
+}
+
+// toString() 方法将函数作为一个字符串返回:
+var txt = myFunction.toString();
+console.log(txt);
+
+// ES6
+const x = (x, y) => x * y;
