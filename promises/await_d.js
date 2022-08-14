@@ -37,3 +37,9 @@ async function f3(x) {
 }
 
 f3(2);
+
+async function f4() {
+    console.log("aaaa");
+}
+f4().then(
+);
