@@ -1,3 +1,4 @@
+"use strict";
 // 函数前的关键字async 使函数返回 promise:
 
 async function f() {
@@ -10,7 +11,7 @@ async function f2() {
     return Promise.reject("abc");
 }
 
-r2 = f2();
+var r2 = f2();
 r2.then(function (rf) {
     console.log(rf);
 }, function (err) {
