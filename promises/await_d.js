@@ -6,7 +6,6 @@ async function f() {
 }
 
 // 等价于
-
 async function f2() {
     return Promise.reject("abc");
 }
