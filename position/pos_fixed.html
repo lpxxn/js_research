@@ -14,6 +14,9 @@
 <!--
 元素的位置相对于浏览器窗口是固定位置。
 即使窗口是滚动的它也不会移动：
+注意： Fixed 定位在 IE7 和 IE8 下需要描述 !DOCTYPE 才能支持。
+Fixed定位使元素的位置与文档流无关，因此不占据空间。
+Fixed定位的元素和其他元素重叠。
 -->
 <body>
 <p class="pos_fixed">Some more text</p>
