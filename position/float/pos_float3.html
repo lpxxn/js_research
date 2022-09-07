@@ -7,6 +7,7 @@
         .news {
             background-color: gray;
             border: solid 1px black;
+            float: left;
         }
 
         .news img {
@@ -22,6 +23,7 @@
 <div class="news">
     <img src="img.png"/>
     <p>
+        不过我们还有另一种办法，那就是对容器 div 进行浮动：        &nbsp;
         要想阻止行框围绕浮动框，需要对该框应用 clear 属性。clear 属性的值可以是 left、right、both 或 none，它表示框的哪些边不应该挨着浮动框。
         This is some text. This is some text. This is some text.
         This is some text. This is some text. This is some text.
@@ -35,5 +37,6 @@
         This is some text. This is some text. This is some text.
     </p>
 </div>
+<div style="height: 1000px; background-color: red; margin: 20px"></div>
 </body>
 </html>
