@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+        }
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+<h1> 网格框 </h1>
+<p>并排浮动的框</p>
+<div class="clearfix">
+    <div class="box" style="background-color: #bbb">
+        <p>some text</p>
+    </div>
+    <div class="box" style="background-color: #ccc">
+        <p>some text</p>
+    </div>
+    <div class="box" style="background-color: #ddd">
+        <p>some text</p>
+    </div>
+</div>
+<p>请注意，我们还用了clearfix hack 来处理布局流，并添加了 box-sizing 属性，以确保框不会由于额外的内边距（填充）而
+损坏。尝试删除此代码以查看效果 </p>
+<p>css 伪元素  https://www.w3school.com.cn/cssref/selector_after.asp </p>
+</body>
+</html>
