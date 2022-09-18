@@ -18,3 +18,12 @@ var i1 = {
     }
 };
 console.log(i1.isEnable, i1.getSize());
+var entity = {
+    add: function (a, b) {
+        return a + b;
+    },
+    del: function (a, b) {
+        return a - b;
+    }
+};
+console.log(entity.add(1, 2), entity.del(2, 1));

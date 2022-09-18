@@ -35,3 +35,19 @@ let i1: Config = {
     }
 }
 console.log(i1.isEnable, i1.getSize());
+
+interface Entity {
+    add: (a: number, b: number) => number;
+
+    del(a: number, b: number): number;
+}
+
+const entity: Entity = {
+    add: (a: number, b: number): number => {
+        return a + b;
+    },
+    del(a: number, b: number): number {
+        return a - b;
+    }
+}
+console.log(entity.add(1, 2), entity.del(2, 1));
