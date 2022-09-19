@@ -27,6 +27,46 @@ var num = Math.round(score);
 /*
 2.任何类型也都可以是unknown类型，但与any完全相反，unknown类型就像是typescript给打上了一个重点检查的标签。在没有对它进行类型检查之前，ubnknow类型的变量是不能进行任何操作的。
 
+let score2: unknown = 1234;
+let num2 = Math.round(score2) // error f type 'unknown' is not assignable to parameter of type 'number'.
+
  */
 var score2 = 1234;
-var num2 = Math.round(score2);
+if (typeof score2 === "number") {
+    var num2 = Math.round(score2);
+}
+// 断言
+var score3 = 87.5;
+var num3 = Math.round(score3);
+// 或
+var num4 = Math.round(score3);
+// 尽量使用使用类型更安全的 unknown
+// function say(this: Window, name:string) {
+//     console.log(this.name);
+// }
+// global.say = say;
+// window.say('hi');
+function convert(x) {
+    if (typeof x === "string") {
+        return Number(x);
+    }
+    if (typeof x === "number") {
+        return String(x);
+    }
+    return -1;
+}
+console.log((convert('1')));
+console.log((convert(1)));
+console.log((convert(null)));
+function convert2(x) {
+    if (typeof x === "string") {
+        return Number(x);
+    }
+    if (typeof x === "number") {
+        return String(x);
+    }
+    return -1;
+}
+console.log((convert2('1')));
+console.log((convert2(1)));
+console.log((convert2(null)));

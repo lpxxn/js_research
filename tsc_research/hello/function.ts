@@ -1,7 +1,7 @@
 // 重载
 
-function disp(s1:string): void;
-function disp(n1:number, s1: string): void;
+function disp(s1: string): void;
+function disp(n1: number, s1: string): void;
 
 function disp(x: any, y?: any): void {
     console.log(x);
@@ -25,6 +25,7 @@ function greet(person: unknown): unknown {
     }
     throw new Error("Unable to run function")
 }
+
 console.log(greet(suits[0]));
 console.log(greet(suits));
 /*
@@ -53,3 +54,41 @@ let num3 = Math.round(score3 as number);
 // 或
 let num4 = Math.round(<number>score3);
 // 尽量使用使用类型更安全的 unknown
+
+// function say(this: Window, name:string) {
+//     console.log(this.name);
+// }
+// global.say = say;
+// window.say('hi');
+
+function convert(x: string | number | null): string | number | -1 {
+    if (typeof x === "string") {
+        return Number(x);
+    }
+    if (typeof x === "number") {
+        return String(x);
+    }
+    return -1;
+}
+
+console.log((convert('1')))
+console.log((convert(1)))
+console.log((convert(null)))
+
+// 重载
+function convert2(x: string): number;
+function convert2(x: number): string;
+function convert2(x: null): -1;
+function convert2(x: string | number | null): any {
+    if (typeof x === "string") {
+        return Number(x);
+    }
+    if (typeof x === "number") {
+        return String(x);
+    }
+    return -1;
+}
+
+console.log((convert2('1')))
+console.log((convert2(1)))
+console.log((convert2(null)))

@@ -23,7 +23,7 @@ interface Config {
     size: 'small' | 'big';
     isEnable: true | false
     margin: 0 | 1 | 2;
-    getSize: (this) => string;
+    getSize: (this:Config) => string;
 }
 
 let i1: Config = {
