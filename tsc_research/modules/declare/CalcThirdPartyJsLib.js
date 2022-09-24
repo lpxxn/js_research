@@ -13,7 +13,7 @@ var Runoob;
     Calc.prototype.doSum = function (limit) {
         var sum = 0;
         for (var i = 0; i <= limit; i++) {
-            sum = sum + 1;
+            sum = sum + i;
         }
         return sum;
     }
@@ -25,3 +25,4 @@ var Runoob;
 var test = new Runoob.Calc();
 console.log(test);
 test.Say();
+console.log(test.doSum(10));
