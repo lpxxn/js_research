@@ -7,3 +7,5 @@ yarn add webpack webpack-cli --dev
 npm i webpack webpack-cli --save-dev
 
 npx webpack
+
+touch webpack.config.js
