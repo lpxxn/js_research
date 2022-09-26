@@ -1,7 +1,7 @@
+初始化项目：
 yarn init -y
 
 npm init -y
-
 
 yarn add webpack webpack-cli --dev
 npm i webpack webpack-cli --save-dev
@@ -46,3 +46,6 @@ alias: {
 npm i webpack-bundle-analyzer --save-dev
 
 npx webpack 会打开一个网页，显示打包后的文件大小
+
+
+https://www.bilibili.com/video/BV11g411y7Sd/?spm_id_from=333.788&vd_source=8d4b220c3958f634b9f3e09271aebf79
