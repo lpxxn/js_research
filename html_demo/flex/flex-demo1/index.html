@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;;
+      font-size: 20px;
+    }
+    #header, #footer {
+      background: #eee;
+      text-align: center;
+      height: 60px;
+      line-height: 50px;
+    }
+
+    #container {
+      display: flex;
+      height: calc(100vh - 120px);
+      /*height: calc(100% - 120px);*/
+    }
+
+    #left {
+      width: 100px;
+      background: #f00;
+    }
+
+    #center {
+      flex: 1;
+      background: #515050;
+    }
+
+    #right {
+      width: 100px;
+      background: #0a0;
+    }
+  </style>
+</head>
+<body>
+<div id="header">#header</div>
+<div id="container">
+  <div id="left">#left</div>
+  <div id="center">#center</div>
+  <div id="right">#right</div>
+</div>
+<div id="footer">#footer</div>
+</body>
+</html>
