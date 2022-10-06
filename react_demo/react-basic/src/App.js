@@ -1,3 +1,5 @@
+import './app.css';
+
 // jsx
 // 1. 识别常规变量
 const name = 'Hello World';
@@ -26,11 +28,17 @@ const songs = [
   {id: 3, name: 'song3'},
 ]
 
+// css
+const stypeObj = {
+  color: 'red'
+}
+
+const showTitle = true;
 function App() {
   return (
     <div className="App">
       {getHader(2)}
-      <p>{name}</p>
+      <p style={stypeObj} >{name}</p>
       { getAge()}
       { flag ? <p>flag is true</p> : <p>flag is false</p>}
       {true ? null: <p>flag is false</p>} /*  null 不会渲染 */
@@ -39,7 +47,7 @@ function App() {
       <ul>
         { songs.map(song => <li key={song.id}>{song.name}</li>)}
       </ul>
-      App
+      <div className={showTitle ? 'title': ''}>App</div>
     </div>
   );
 }
