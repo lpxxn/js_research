@@ -28,10 +28,11 @@ const songs = [
   {id: 3, name: 'song3'},
 ]
 
-// css
+// css stype 
 const stypeObj = {
   color: 'red'
 }
+// css className eg: className='age'
 
 const showTitle = true;
 function App() {
@@ -39,9 +40,10 @@ function App() {
     <div className="App">
       {getHader(2)}
       <p style={stypeObj} >{name}</p>
-      { getAge()}
+      <p className='age'>{ getAge()}</p>
       { flag ? <p>flag is true</p> : <p>flag is false</p>}
-      {true ? null: <p>flag is false</p>} /*  null 不会渲染 */
+      {/*  null 不会渲染 */}
+      {true ? null: <p>flag is false</p>} 
       { arr.map((item, index) => <em key={index}>{item}</em>)}
       {/* { songs.map(song => <p key={song.id}>{song.name}</p>)} */}
       <ul>
