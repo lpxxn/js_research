@@ -30,8 +30,29 @@ class HelloComponent extends React.Component {
   }
   name = 'hello'
   render () {
-    return <div>HelloComponent {this.name} age: {this.state.age} count: {this.state.count}<button onClick={(e) => this.click(e, "aabc")}>Btn</button></div>
+    return (<div>
+      HelloComponent {this.name} age: {this.state.age} count: {this.state.count}
+      <br />
+      <button onClick={(e) => this.click(e, "aabc")}>Btn</button>
+      <br />
+      <button onClick={this.errHandler}>有问题的方法</button>
+      <br />
+      <button onClick={() => { this.errHandler() }}>修复方法2</button>
+    </div>)
   }
+  errHandler () {
+    console.log(this)// this 为undefine this.SetState就会报错, class默认是strit模式，this 指向的undefine,所以需要手动绑定/箭头函数 ES6文档
+    // 箭头函数永远指向父作用域，this 指向是固定的，普通函数的this指向是可变的，指向调用他的对象
+    // 如果一定要这么，可以在构造函数里做绑定如下：
+  }
+  constructor() {
+    super()
+    // 修复方法1
+    // 使用bind强行修正this永远指向当前组件实例对象, call, apply也可以
+    // 或者用上面的在onClick里用箭头函数，箭头函数永远指向父作用域
+    // this.errHandler = this.errHandler.bind(this)
+  }
+
 }
 
 function HelloComponent2 () {
