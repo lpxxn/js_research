@@ -17,8 +17,8 @@ npm start
 pnpm install
 pnpm start
 
-pnpm add -g sax Install package globally
-pnpm add sax Save to dependencies
+pnpm add -g sax 保存到 dependencies 配置项下 Install package globally
+pnpm add sax 保存到 devDependencies 配置项下 Save to dependencies
 pnpm add -D sax Save to devDependencies
 pnpm add -O sax Save to optionalDependencies
 
