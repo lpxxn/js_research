@@ -17,10 +17,10 @@ npm start
 pnpm install
 pnpm start
 
-pnpm add -g sax 保存到 dependencies 配置项下 Install package globally
-pnpm add sax 保存到 devDependencies 配置项下 Save to dependencies
-pnpm add -D sax Save to devDependencies
-pnpm add -O sax Save to optionalDependencies
+pnpm add -g sax 安装软件包到全局环境中 Install package globally
+pnpm add sax 保存到 dependencies 配置项下 Save to dependencies
+pnpm add -D sax 保存到 devDependencies 配置项下 Save to devDependencies
+pnpm add -O sax 保存到 optionalDependencies 配置项下 Save to optionalDependencies
 
 https://www.bilibili.com/video/BV1Z44y1K7Fj?p=5&spm_id_from=pageDriver&vd_source=8d4b220c3958f634b9f3e09271aebf79
 
