@@ -11,11 +11,20 @@ function Hello () {
 // 类组件的创建和渲染
 // 创建
 class HelloComponent extends React.Component {
-  click = function (e, msg) {
+  // click = function (e, msg) {
+  //   console.log('click', e, msg)
+  // }
+  click = (e, msg) => {
     console.log('click', e, msg)
+    this.state.count++
+    this.name = this.name + this.state.count
   }
+  state = {
+    count: 0
+  }
+  name = 'hello'
   render () {
-    return <div>HelloComponent<button onClick={(e) => this.click(e, "aabc")}>Btn</button></div>
+    return <div>HelloComponent {this.name} count: {this.state.count}<button onClick={(e) => this.click(e, "aabc")}>Btn</button></div>
   }
 }
 
