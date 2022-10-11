@@ -25,11 +25,12 @@ class HelloComponent extends React.Component {
     this.name = this.name + this.state.count
   }
   state = {
-    count: 0
+    count: 0,
+    age: 18
   }
   name = 'hello'
   render () {
-    return <div>HelloComponent {this.name} count: {this.state.count}<button onClick={(e) => this.click(e, "aabc")}>Btn</button></div>
+    return <div>HelloComponent {this.name} age: {this.state.age} count: {this.state.count}<button onClick={(e) => this.click(e, "aabc")}>Btn</button></div>
   }
 }
 
