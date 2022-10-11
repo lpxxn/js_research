@@ -16,7 +16,12 @@ class HelloComponent extends React.Component {
   // }
   click = (e, msg) => {
     console.log('click', e, msg)
-    this.state.count++
+    // 注意，不可以直接做赋值修改，不然不会体现到页面上，必须通过 setState方法
+    //this.state.count++
+    this.setState({
+      count: this.state.count + 1
+    })
+
     this.name = this.name + this.state.count
   }
   state = {
