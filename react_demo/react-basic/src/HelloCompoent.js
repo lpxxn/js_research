@@ -30,6 +30,8 @@ class HelloComponent extends React.Component {
   }
   name = 'hello'
   render () {
+    // render 方法在react内部已经做了修正，他的this就是当前组件
+    console.log('父级函数的this指向为：', this)
     return (<div>
       HelloComponent {this.name} age: {this.state.age} count: {this.state.count}
       <br />
