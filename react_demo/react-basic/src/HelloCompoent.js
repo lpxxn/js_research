@@ -99,6 +99,7 @@ class InputElement extends React.Component {
     //this.setState({})
     // 4 但是，上面的写法，不是react推荐的写法，推荐使用下面的写法
     // 也可以这么写
+    // 只能叫setState，不能叫其他名字，因为react内部有一些方法，会去读取这个状态，如果不叫setState，就会找不到，报错
     this.setState({
       message: e.target.value
     })
