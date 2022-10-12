@@ -57,6 +57,8 @@ class HelloComponent extends React.Component {
       <button onClick={this.errHandler}>有问题的方法</button>
       <br />
       <button onClick={() => { this.errHandler() }}>修复方法2</button>
+      <br />
+      <p>下面是受控组件的知识点</p>
     </div>)
   }
   errHandler () {
@@ -79,8 +81,34 @@ function HelloComponent2 () {
     <div>
       <Hello />
       <HelloComponent />
+      <InputElement />
     </div>
   )
+}
+
+class InputElement extends React.Component {
+  // 1 声明用来控制input value的react 组件自己的状态
+  // 只能叫state，不能叫其他名字，因为react内部有一些方法，会去读取这个状态，如果不叫state，就会找不到，报错
+  state = {
+    message: 'this is message'
+  }
+  changeHandler = (e) => {
+    // 2 在事件处理函数中，修改状态
+    //this.stateValues.message = e.target.value
+    // 3 重新渲染, 如果不重新渲染，页面不会更新，一直是初始值
+    //this.setState({})
+    // 4 但是，上面的写法，不是react推荐的写法，推荐使用下面的写法
+    // 也可以这么写
+    this.setState({
+      message: e.target.value
+    })
+    console.log("current message value: ", this.state.message)
+  }
+  render () {
+    return (
+      <input type="text" value={this.state.message} onChange={this.changeHandler} />
+    )
+  }
 }
 
 export default HelloComponent2
