@@ -19,14 +19,27 @@ class HelloComponent extends React.Component {
     // 注意，不可以直接做赋值修改，不然不会体现到页面上，必须通过 setState方法
     //this.state.count++
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
+      // ... 展开运算符，展开对象，可以展开数组
+      list: [...this.state.list, 'item' + this.state.count]
     })
 
+    this.setState({
+      person: {
+        ...this.state.person,
+        age: this.state.person.age + 1
+      }
+    })
     this.name = this.name + this.state.count
   }
   state = {
     count: 0,
-    age: 18
+    age: 18,
+    list: [1, 2, 3],
+    person: {
+      name: 'zhangsan',
+      age: 18
+    }
   }
   name = 'hello'
   render () {
@@ -34,6 +47,10 @@ class HelloComponent extends React.Component {
     console.log('父级函数的this指向为：', this)
     return (<div>
       HelloComponent {this.name} age: {this.state.age} count: {this.state.count}
+      <br />
+      <ul>
+        {this.state.list.map((item, index) => { return <li key={item} >{item}</li> })}
+      </ul>
       <br />
       <button onClick={(e) => this.click(e, "aabc")}>Btn</button>
       <br />
