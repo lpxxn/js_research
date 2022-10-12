@@ -1,4 +1,4 @@
-import React from "react"
+import React, { createRef } from "react"
 
 // 函数组件创建和渲染
 function Hello () {
@@ -82,10 +82,11 @@ function HelloComponent2 () {
       <Hello />
       <HelloComponent />
       <InputElement />
+      <InputElement2 />
     </div>
   )
 }
-
+// 受控组件,是指表单元素的值受到react的控制，如下面的InputElemt
 class InputElement extends React.Component {
   // 1 声明用来控制input value的react 组件自己的状态
   // 只能叫state，不能叫其他名字，因为react内部有一些方法，会去读取这个状态，如果不叫state，就会找不到，报错
@@ -112,4 +113,24 @@ class InputElement extends React.Component {
   }
 }
 
+// 非受控组件，是指表单元素的值不受react的控制,通过DOM手动操作来获取文本框的值，不受react控制
+class InputElement2 extends React.Component {
+  // 1. 导入createRef 函数，最上面 import React, { createRef } from 'react'
+  // 2. 调用createRef函数，创建一个ref对象，保存到属性里
+  msgRef = createRef()
+  getValue = () => {
+    // 3. 通过ref对象，获取到真实的DOM元素
+    console.log(this.msgRef.current.value)
+  }
+  render () {
+    return (
+      <>
+        <p>非受控组件，是指表单元素的值不受react的控制</p>
+        {/* // 3. 给input元素，添加ref属性，值为上面创建的ref对象msgRef */}
+        <input type="text" ref={this.msgRef}></input>
+        <button onClick={this.getValue}>点击获取输入框的值</button>
+      </>
+    )
+  }
+}
 export default HelloComponent2
