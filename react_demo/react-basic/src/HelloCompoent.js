@@ -119,7 +119,8 @@ class InputElement2 extends React.Component {
   // 2. 调用createRef函数，创建一个ref对象，保存到属性里
   msgRef = createRef()
   getValue = () => {
-    // 3. 通过ref对象，获取到真实的DOM元素
+    // 4. 通过ref.current获取到真实的DOM元素，其中msgRef.current.value就是文本框的值
+    console.log(this.msgRef.current)
     console.log(this.msgRef.current.value)
   }
   render () {
