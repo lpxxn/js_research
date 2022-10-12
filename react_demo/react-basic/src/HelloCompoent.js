@@ -42,6 +42,9 @@ class HelloComponent extends React.Component {
     }
   }
   name = 'hello'
+  liClick = (e, id) => {
+    console.log('liClick', id)
+  }
   render () {
     // render 方法在react内部已经做了修正，他的this就是当前组件
     console.log('父级函数的this指向为：', this)
@@ -49,7 +52,7 @@ class HelloComponent extends React.Component {
       HelloComponent {this.name} age: {this.state.age} count: {this.state.count}
       <br />
       <ul>
-        {this.state.list.map((item, index) => { return <li key={item} >{item}</li> })}
+        {this.state.list.map((item, index) => { return <li key={item} onClick={(e) => { this.liClick(e, item) }}>{item}</li> })}
       </ul>
       <br />
       <button onClick={(e) => this.click(e, "aabc")}>Btn</button>
