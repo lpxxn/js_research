@@ -5,6 +5,7 @@ function Son1 (props) {
   // props 是一个对象，里面存放的是父组件传递过来的数据
   // props 是只读的，不能修改
   // props.name = 'lipeng' //error
+  // props 可以传递任意类型的数据，数字，字符串，对象，数组，函数，JSX
   return (
     <div>
       <h1>son1</h1>
