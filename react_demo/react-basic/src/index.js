@@ -6,6 +6,7 @@ import './index.css'
 import App from './App'
 
 import HelloComponent from './HelloCompoent'
+import FatherSon from './FatherSon'
 
 // 渲染根组件
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -18,6 +19,7 @@ root.render(
     <App />
 
     <HelloComponent></HelloComponent>
+    <FatherSon></FatherSon>
   </div>
   // </React.StrictMode>
 )
