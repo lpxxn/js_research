@@ -8,6 +8,8 @@ import App from './App'
 import HelloComponent from './HelloCompoent'
 import FatherSon from './FatherSon'
 import Brother from './Brother'
+
+import ContextFather from './ContextFather'
 // 渲染根组件
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -21,6 +23,8 @@ root.render(
     <HelloComponent></HelloComponent>
     <FatherSon></FatherSon>
     <Brother></Brother>
+
+    <ContextFather></ContextFather>
   </div>
   // </React.StrictMode>
 )
