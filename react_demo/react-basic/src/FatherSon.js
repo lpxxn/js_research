@@ -41,7 +41,7 @@ class Son2 extends React.Component {
         {/* 类组件必须通过this关键词去获取,这里的props是固定的 */}
         <button onClick={() => { this.props.clickHandler2("hello") }}>点击我{this.props.message}</button>
         {/* 解构的方式 */}
-        <button onClick={() => { clickHandler2("hello") }}>解构方式{message}</button>
+        <button onClick={() => { clickHandler2("子组件传递的数据：hello") }}>解构方式{message}</button>
         {this.props.child}
       </div >
     )
