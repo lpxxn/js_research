@@ -16,18 +16,34 @@ function Son1 (props) {
     </div>
   )
 }
+// 也可以直接用参数, 进行解构赋值
+function Son12 ({ list, userInfo, clickHandler }) {
+  return (
+    console.log('Son12 props userInfo: ', userInfo, list, clickHandler),
+    <div>
+      <h1>son12</h1>
+      <button onClick={clickHandler}>触发父组件传入的函数</button>
+      {list.map((item, index) => <label key={index}>{[index, item]}</label>)}
+      {userInfo.name}
+    </div>
+  )
+}
 
 // 类组件Son
 class Son2 extends React.Component {
   render () {
+    const { clickHandler2, message, child } = this.props
     return (
       console.log('Son2 props', this.props),
-      <div>
+      // 可以用解构的方式
+      < div >
         <h1>son2</h1>
         {/* 类组件必须通过this关键词去获取,这里的props是固定的 */}
         <button onClick={() => { this.props.clickHandler2("hello") }}>点击我{this.props.message}</button>
+        {/* 解构的方式 */}
+        <button onClick={() => { clickHandler2("hello") }}>解构方式{message}</button>
         {this.props.child}
-      </div>
+      </div >
     )
   }
 }
@@ -62,6 +78,7 @@ class Father extends React.Component {
         <h1>父组件</h1>
         <input type="text" value={this.state.message} onChange={this.changeHandler} />
         <Son1 list={this.state.list} clickHandler={this.state.clickHandler} userInfo={this.state.userInfo} />
+        <Son12 list={this.state.list} clickHandler={this.state.clickHandler} userInfo={this.state.userInfo} />
         <Son2 message={this.state.message} clickHandler2={this.state.clickHandler2} child={<span>this is span</span>}></Son2>
       </div>
     )
