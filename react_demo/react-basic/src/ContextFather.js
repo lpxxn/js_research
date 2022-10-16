@@ -3,7 +3,6 @@ import ComA from "./ContextSon"
 
 export const { Provider, Consumer } = createContext()
 
-
 class ContextFather extends React.Component {
   state = {
     msg: 'this is a message'
