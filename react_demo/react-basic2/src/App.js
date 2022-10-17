@@ -68,6 +68,7 @@ class Test3 extends React.Component {
   render () {
     return (<div>Test3</div>)
   }
+  // 如果和视图没有关系，就不用写到state对象里。
   timer = null
   componentDidMount () {
     this.timer = setInterval(() => {
