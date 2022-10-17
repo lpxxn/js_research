@@ -29,13 +29,15 @@ class Test2 extends React.Component {
     msg: 'hello'
   }
   state = {
-    msg: ''
+    msg: '',
+    flag: true
   }
   render () {
     console.log("render")
     return (
       <div>
         pageSize: {this.props.pageSize} msg: {this.props.msg}
+        {this.state.flag ? <Test3></Test3> : null}
         <button onClick={this.Click}>click msg:{this.state.msg}</button>
       </div>
     )
@@ -43,7 +45,8 @@ class Test2 extends React.Component {
   Click = () => {
     console.log("click")
     this.setState({
-      msg: 'world'
+      msg: 'world',
+      flag: !this.state.flag
     })
   }
   constructor() {
@@ -51,12 +54,31 @@ class Test2 extends React.Component {
     console.log("constructor")
   }
   componentDidMount () {
-    console.log("componentDidMount")
+    console.log("componentDidMount 挂载阶段")
+    // 可以在里面进行清理工作
   }
   componentDidUpdate () {
-    console.log("componentDidUpdate")
+    console.log("componentDidUpdate, 组件更新完后（DOM渲染完毕），不要在里面直接操作 setState")
   }
 
+
+}
+
+class Test3 extends React.Component {
+  render () {
+    return (<div>Test3</div>)
+  }
+  timer = null
+  componentDidMount () {
+    this.timer = setInterval(() => {
+      console.log('定时任务')
+    }, 1000)
+  }
+  componentWillUnmount () {
+    console.log("componentWillUnmount, 卸载阶段")
+    // 如果不清理，会一直存在。
+    clearInterval(this.timer)
+  }
 }
 
 function App () {
