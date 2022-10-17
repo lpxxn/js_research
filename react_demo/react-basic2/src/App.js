@@ -28,13 +28,35 @@ class Test2 extends React.Component {
     pageSize: 10,
     msg: 'hello'
   }
+  state = {
+    msg: ''
+  }
   render () {
+    console.log("render")
     return (
       <div>
         pageSize: {this.props.pageSize} msg: {this.props.msg}
+        <button onClick={this.Click}>click msg:{this.state.msg}</button>
       </div>
     )
   }
+  Click = () => {
+    console.log("click")
+    this.setState({
+      msg: 'world'
+    })
+  }
+  constructor() {
+    super()
+    console.log("constructor")
+  }
+  componentDidMount () {
+    console.log("componentDidMount")
+  }
+  componentDidUpdate () {
+    console.log("componentDidUpdate")
+  }
+
 }
 
 function App () {
