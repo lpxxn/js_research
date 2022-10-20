@@ -2,6 +2,7 @@ import './App.css'
 import React from 'react'
 import { Button, Input, Space, Table } from 'antd'
 import axios from 'axios'
+import { responsiveArray } from 'antd/lib/_util/responsiveObserve'
 const { Search } = Input
 // 1. 找到对应的组件，把页面搭起来
 // 2. table 渲染出来（发送请求(componentDidMount)拿到数据 提交给list(this.setState)）
@@ -38,8 +39,16 @@ class App extends React.Component {
     console.log(value)
   }
   loadList = async () => {
-    const res = await axios.get('http://localhost:3001/data')
-    console.log(res)
+    try {
+      const resp = await axios.get('http://localhost:3001/data')
+      console.log(resp)
+      const data = resp.data.data
+      this.setState({
+        list: data
+      })
+    } catch (err) {
+      console.log("loadList err:", err)
+    }
   }
   componentDidMount () {
     this.loadList()
