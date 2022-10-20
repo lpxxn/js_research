@@ -55,7 +55,6 @@ class Test2 extends React.Component {
   }
   componentDidMount () {
     console.log("componentDidMount 挂载阶段")
-    // 可以在里面进行清理工作
   }
   componentDidUpdate () {
     console.log("componentDidUpdate, 组件更新完后（DOM渲染完毕），不要在里面直接操作 setState")
