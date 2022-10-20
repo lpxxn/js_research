@@ -1,6 +1,6 @@
 import './App.css'
 import React from 'react'
-import { Button, Input, Space, Table } from 'antd'
+import { Button, Input, Popconfirm, Space, Table } from 'antd'
 import axios from 'axios'
 import { responsiveArray } from 'antd/lib/_util/responsiveObserve'
 const { Search } = Input
@@ -28,11 +28,25 @@ class App extends React.Component {
       },
       {
         title: '操作',
-        dataIndex: 'action',
-        key: 'action',
+        key: "id",
+        render: (_, record) =>
+          // this.state.List.length > 0 ? (
+          //   <Popconfirm title="是否删除" onConfirm={() => this.hanndleDelete()}>
+          //     <a>删除</a>
+          //   </Popconfirm>
+          // ) : null,
+          <Popconfirm title="是否删除" onConfirm={() => this.hanndleDelete(_, record)}>
+            <a>删除</a>
+          </Popconfirm>
       }
 
     ]
+  }
+  hanndleDelete = async (_, record) => {
+    console.log("record: ", record)
+    await axios.delete(`http://localhost:3001/data/${record.id}`)
+    // 重新获取列表
+    this.loadList()
   }
   // 点击搜索图标、清除图标，或按下回车键时的回调
   onSearch = (value) => {
@@ -42,7 +56,7 @@ class App extends React.Component {
     try {
       const resp = await axios.get('http://localhost:3001/data')
       console.log(resp)
-      const data = resp.data.data
+      const data = resp.data
       this.setState({
         list: data
       })
