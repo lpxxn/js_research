@@ -1,11 +1,12 @@
 import './App.css'
 import React from 'react'
-import { Button, Input } from 'antd'
+import { Button, Input, Space, Table } from 'antd'
 const { Search } = Input
 
 class App extends React.Component {
   state = {
     List: [],
+    // 列信息
     columns: [
       {
         title: '任务编号',
@@ -37,6 +38,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="container">
+        {/* 搜索 */}
         <Search
           placeholder="input search text"
           allowClear
@@ -44,6 +46,8 @@ class App extends React.Component {
           size="large"
           onSearch={this.onSearch}
         />
+        {/* Table */}
+        <Table dataSource={this.state.list} columns={this.state.columns} />
       </div>
     )
   }
