@@ -1,0 +1,81 @@
+kind: http
+port: 3001
+server:
+  methods:
+    - name: testApi
+      path: /data
+      method: GET
+      defaultResponse: |-
+        {"code": 0,"message": "success",
+           "data": [
+           { "id": 1, "name": "吃饭", "age": 18, "desc": "干饭人" },
+           { "id": 2, "name": "睡觉", "age": 18, "desc": "睡觉做梦写代码" },
+           { "id": 3, "name": "打豆豆","age": 18, "desc": "打豆豆" }
+           ]
+        }
+    - name: testApi2
+      path: /user/:userID/order/:orderNo
+      method: POST
+      defaultResponse: |-
+        {
+          "code": 0, "message": "success",
+          "data": {
+            "orderNo": "$param.orderNo",
+            "userID": $param.userID,
+            "desc": "{{RandString 5 20}}"
+                  }
+        }
+    - name: testApi3
+      path: /user/:userID/createOrder
+      method: POST
+      defaultResponse: |-
+        {
+          "code": 0, "message": "success",
+          "data": {
+            "orderNo": "OrderNo{{RandString 5 10}}",
+            "userID": $param.userID,
+            "desc": "{{RandString 5 20}}"
+          }
+        }
+      conditions:
+        - condition: '$query.userID == 1'
+          response: |-
+            {
+              "code": 0, "message": "success",
+              "data": {
+                "orderNo": "OrderNo{{RandString 5 10}}",
+                "userID": $param.userID,
+                "desc": "query.userID == 1"
+              }
+            }
+        - condition: '$param.userID == 1'
+          response: |-
+            {
+              "code": 0, "message": "success",
+              "data": {
+                "orderNo": "OrderNo{{RandString 5 10}}",
+                "userID": $param.userID,
+                "desc": "param.userID == 1"
+              }
+            }
+        - condition: '$body.userID == 1 && $query.userID == 2'
+          response: |-
+            {
+              "code": 0, "message": "success",
+              "data": {
+                "orderNo": "OrderNo{{RandString 5 10}}",
+                "userID": $body.userID,
+                "queryUserID": $query.userID,
+                "desc": "body.userID == 1 && query.userID == 2"
+              }
+            }
+        - condition: '$body.userID == 1'
+          response: |-
+            {
+              "code": 0, "message": "success",
+              "data": {
+                "orderNo": "OrderNo{{RandString 5 10}}",
+                "userID": $param.userID,
+                "desc": "body.userID == 1"
+              }
+            }
