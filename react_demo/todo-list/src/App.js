@@ -49,8 +49,16 @@ class App extends React.Component {
     this.loadList()
   }
   // 点击搜索图标、清除图标，或按下回车键时的回调
-  onSearch = (value) => {
-    console.log(value)
+  onSearch = async (value) => {
+    if (typeof value === 'string' && value.trim().length > 0) {
+      console.log(value)
+      let resp = await axios.get(`http://localhost:3001/data/?q=${value}`)
+      this.setState({
+        list: resp.data
+      })
+    } else {
+      console.log('is empty')
+    }
   }
   loadList = async () => {
     try {
