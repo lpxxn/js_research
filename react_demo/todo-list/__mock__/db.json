@@ -1,34 +1,19 @@
 {
-  "data": [
+  "posts": [
     {
       "id": 1,
-      "name": "吃饭",
-      "des": "干饭人干饭魂"
-    },
-    {
-      "id": 2,
-      "name": "睡觉",
-      "des": "不如睡觉写代码不如睡觉"
-    },
-    {
-      "id": 3,
-      "name": "打豆豆",
-      "des": "不如睡觉写代码不如睡觉"
-    },
-    {
-      "id": 4,
-      "name": "写vue代码",
-      "des": "不如睡觉写代码不如睡觉"
-    },
-    {
-      "id": 5,
-      "name": "写react代码",
-      "des": "不如睡觉写代码不如睡觉"
-    },
-    {
-      "id": 6,
-      "name": "写webpack代码",
-      "des": "不如睡觉写代码不如睡觉"
+      "title": "json-server",
+      "author": "typicode"
     }
-  ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
