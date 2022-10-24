@@ -22,7 +22,7 @@ function App () {
   function test () {
     console.log('list: ', list)
     setFlag(!flag)
-    setList([1, 2, 3])
+    setList([1].concat(list))
   }
   return (
     <div >
