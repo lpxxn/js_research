@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // 首次渲染的时候， 组件内部的代码会被执行一次
 // 其中useState也会跟着执行，这里重点注意，初始值只在首次渲染时生效
 
@@ -24,6 +24,11 @@ function App () {
     setFlag(!flag)
     setList([1].concat(list))
   }
+  // 只有设置count的时候才会执行
+  useEffect(() => {
+    console.log("useEffect")
+    document.title = count
+  }, [count])
   return (
     <div >
       <button onClick={() => { setCount(count + 1) }}>{count}</button>
