@@ -25,13 +25,17 @@ function App () {
     setList([1].concat(list))
   }
   // 只有设置count的时候才会执行
+  // count setCount -> render -> userEffect
   useEffect(() => {
     console.log("useEffect")
     document.title = count
   }, [count])
   return (
     <div >
-      <button onClick={() => { setCount(count + 1) }}>{count}</button>
+      <button onClick={() => {
+        setCount(count + 1)
+        console.log('after set count')
+      }}>{count}</button>
       <br></br>
       <p>flag: {flag ? 1 : 0}</p>
       {list.map((item, idx) => <label key={idx}>{[item, idx]}</label>)}
