@@ -30,8 +30,10 @@ function App () {
     console.log("useEffect")
     document.title = count
   }, [count])
+
+  const [y] = useWindowScrool()
   return (
-    <div >
+    <div style={{ height: '12000px' }}>
       <button onClick={() => {
         setCount(count + 1)
         console.log('after set count')
@@ -40,8 +42,20 @@ function App () {
       <p>flag: {flag ? 1 : 0}</p>
       {list.map((item, idx) => <label key={idx}>{[item, idx]}</label>)}
       <button onClick={() => { test() }}>+</button>
+      <br></br>
+      <span>scroll: {y}</span>
     </div>
   )
+}
+
+export function useWindowScrool () {
+  const [y, setY] = useState(0)
+  // 在滚动发生时，不断的获取滚动值，赋值给y
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollTop
+    setY(h)
+  })
+  return [y]
 }
 
 export default App
