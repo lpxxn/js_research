@@ -31,6 +31,10 @@ function App (props) {
   useEffect(() => {
     console.log("useEffect")
     document.title = count
+    return () => {
+      // 组件销毁的时候执行，也就是下一次副作用执行之前执行
+      console.log("useEffect return")
+    }
   }, [count])
 
   const [y] = useWindowScrool()
