@@ -37,6 +37,10 @@ function App (props) {
     }
   }, [count])
   const [y] = useWindowScrool()
+  const [msg, setMsg] = useLocalStorage('userName', 'li')
+  setInterval(() => {
+    setMsg('hello zhang')
+  }, 2000)
   return (
     <div style={{ height: '12000px' }}>
       <button onClick={() => {
@@ -49,6 +53,7 @@ function App (props) {
       <button onClick={() => { test() }}>+</button>
       <br></br>
       <span>scroll: {y}</span>
+      <p>msg: {msg}</p>
     </div>
   )
 }
@@ -64,3 +69,14 @@ export function useWindowScrool () {
 }
 
 export default App
+
+
+function useLocalStorage (key, defaultValue) {
+  const [msg, setMsg] = useState(defaultValue)
+  // 每次msg变化 就同步到本地
+  useEffect(() => {
+    window.localStorage.setItem(key, msg)
+  }, [msg, key])
+
+  return [msg, setMsg]
+}
