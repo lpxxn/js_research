@@ -36,7 +36,6 @@ function App (props) {
       console.log("useEffect return")
     }
   }, [count])
-
   const [y] = useWindowScrool()
   return (
     <div style={{ height: '12000px' }}>
