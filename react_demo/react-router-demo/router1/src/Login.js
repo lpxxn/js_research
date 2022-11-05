@@ -8,7 +8,7 @@ function Login () {
   // 跳转到关于页面
   const toAbout = () => {
     // 3. 调用转跳函数
-    navigate('/about?id=1&name=jack', { replace: true })
+    navigate('/about/1234?id=1&name=jack', { replace: true })
   }
   return (
     <div>

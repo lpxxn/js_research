@@ -16,7 +16,7 @@ function App () {
       <Routes>
         {/* 指定路径和组件的对应关系 path 代表路径 element 代表组件万对出现 path -> elemetn */}
         <Route path="/" element={<Home></Home>} />
-        <Route path="/about" element={<About></About>} />
+        <Route path="/about/:id" element={<About></About>} />
         <Route path="/login" element={<Login></Login>} />
       </Routes>
     </BrowserRouter>
