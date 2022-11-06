@@ -1,4 +1,5 @@
 import { counterStore } from "./store/Counter"
+// 导入 observer 连接react和mobx
 import { observer } from 'mobx-react-lite'
 
 function App () {
