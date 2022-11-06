@@ -15,6 +15,15 @@ class CounterStore {
     this.count++
   }
 
+  list = [1, 2, 3]
+  // 1. 定义计算属性
+  get filterList () {
+    return this.list.filter(item => item > 1)
+  }
+  // 2. 定义action函数，修改数据
+  addList = () => {
+    this.list.push(4, 5, 6)
+  }
 }
 
 let counterStore = new CounterStore()

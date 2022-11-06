@@ -7,6 +7,8 @@ function App () {
     <div>
       <p>count: {counterStore.count}</p>
       <button onClick={counterStore.addCount}>add</button>
+      <p>使用计算属性 filterList: {counterStore.filterList.join('-')}</p>
+      <button onClick={counterStore.addList}>添加List元素</button>
     </div>
   )
 }
