@@ -26,5 +26,5 @@ class CounterStore {
   }
 }
 
-let counterStore = new CounterStore()
-export { counterStore }
+//let counterStore = new CounterStore()
+export { CounterStore }
