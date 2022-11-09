@@ -7,6 +7,7 @@ import { useStore } from './store/index'
 function App () {
   const rootStore = useStore()
   //  也可以解构
+  // const { counterStore } = useStore()
   console.log('rootStore: ', rootStore)
   return (
     <div>

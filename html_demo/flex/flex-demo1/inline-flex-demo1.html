@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .flex_container {
+            display: inline-flex;
+            background-color: red;
+        }
+        .flex_item {
+            width: 50px;
+            height: 50px;
+
+            background-color: blue;
+            border: 1px solid black;
+        }
+        #outer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .flex_container2 {
+            display: flex;
+            width: 400px;
+            margin: 0 auto;
+            flex-direction: column;
+            background-color: #66ff00;
+        }
+        .flex_item2 {
+            flex-basis: 200px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: 50px;
+            width: 400px;
+
+            background-color: rgba(0, 189, 125, 0.98);
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<p>
+    两者的区别描述：
+
+    flex： 将对象作为弹性伸缩盒显示
+    inline-flex：将对象作为内联块级弹性伸缩盒显示
+    一句话来描述就是 当Flex Box 容器没有设置宽度大小限制时，当display 指定为 flex 时，FlexBox 的宽度会填充父容器，当display指定为 inline-flex 时，FlexBox的宽度会包裹子Item，如下图所示：
+</p>
+<div>
+    <div class="flex_container">
+        <div class="flex_item">1</div>
+        <div class="flex_item">2</div>
+        <div class="flex_item">3</div>
+    </div>
+</div>
+
+<em>center</em>
+<div id="outer">
+    <div class="flex_container2">
+        <div class="flex_item2">1</div>
+        <div class="flex_item2">2</div>
+        <div class="flex_item2">3</div>
+    </div>
+</div>
+<p>footer</p>
+</body>
+</html>
