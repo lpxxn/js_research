@@ -20,12 +20,19 @@ pnpm dlx create-react-app mobx-demo
 npm install mobx mobx-react --save
 
 pnpm add mobx mobx-react-lite
+
 ```
 
 ## scss
 
 ```
 pnpm add -D sass
+
+pnpm add react-router-dom
+
+pnpm add antd
+
+pnpm add -D @craco/craco
 ```
 
 3. 链接 mobx 和 react 的中间件
@@ -38,6 +45,7 @@ https://codesandbox.io/s/gifted-frog-bk6xkh?file=/src/index.js
 React 基础讲义: https://www.yuque.com/fechaichai/qeamqf/xbai87
 React 和 Mobx 讲义: https://www.yuque.com/fechaichai/qeamqf/apomum
 ReactPc 项目讲义: https://www.yuque.com/fechaichai/tzzlh1
+ant Design https://ant.design/components/button-cn
 
 ```
 
