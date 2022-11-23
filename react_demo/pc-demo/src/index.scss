@@ -1,8 +1,9 @@
+$rootHeight: 100%;
+html,
 body {
+  height: $rootHeight;
   margin: 0;
 }
 
-$rootHeight: 100%;
 #root {
-  height: $rootHeight;
 }
