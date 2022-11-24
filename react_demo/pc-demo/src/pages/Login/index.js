@@ -2,10 +2,17 @@ import { Form, Input, Button, Checkbox, Card } from 'antd'
 
 import "./index.scss"
 const Login = () => {
+
+  function onFinish (values) {
+    console.log('Success:', values)
+  }
+
   return (
     <div className="login">
       <Card title="登录" className="card">
-        <Form validateTrigger={['onBlur', 'onChange']} initialValues={{ remember: true }}>
+        <Form validateTrigger={['onBlur', 'onChange']}
+          initialValues={{ remember: true, code: '123456' }}
+          onFinish={onFinish}>
           <Form.Item
             name="phone"
             rules={[{ required: true, message: '请输入手机号' },
