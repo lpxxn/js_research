@@ -1,17 +1,21 @@
 import { Form, Input, Button, Checkbox, Card } from 'antd'
 
 import "./index.scss"
-const Login = () => {
+import { useStore } from '@/store'
 
+const Login = () => {
+  const { loginStore } = useStore()
   function onFinish (values) {
     console.log('Success:', values)
+    loginStore.setToken({ mobile: values.phone, code: values.code })
+
   }
 
   return (
     <div className="login">
       <Card title="登录" className="card">
         <Form validateTrigger={['onBlur', 'onChange']}
-          initialValues={{ remember: true, code: '123456' }}
+          initialValues={{ remember: true, code: '246810' }}
           onFinish={onFinish}>
           <Form.Item
             name="phone"
