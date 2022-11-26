@@ -16,7 +16,8 @@ http.interceptors.request.use((config) => {
 // 添加响应拦截器
 http.interceptors.response.use((response) => {
   // 2xx 状态码会进入这里
-  return response.data
+  console.log(response)
+  return response
 }, (error) => {
   // 非 2xx 状态码会进入这里
   return Promise.reject(error)

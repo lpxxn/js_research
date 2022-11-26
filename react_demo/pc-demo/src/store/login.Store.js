@@ -1,5 +1,6 @@
 
 import { makeAutoObservable } from 'mobx'
+import { http } from '@/utils'
 
 class LoginStore {
   token = ''
@@ -7,8 +8,14 @@ class LoginStore {
     // 
     makeAutoObservable(this)
   }
-  setToken ({ mobile, code }) {
+  async setToken ({ mobile, code }) {
 
+    const resp = await http.post('/authorizations', {
+      mobile,
+      code
+    })
+    console.log(resp)
+    this.token = resp.token
   }
 }
 
