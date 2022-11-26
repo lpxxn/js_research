@@ -16,8 +16,8 @@ class LoginStore {
       code
     })
     console.log(resp)
-    this.token = resp.data.data.token
-    this.refreshToken = resp.data.data.refresh_token
+    this.token = resp.data.token
+    this.refreshToken = resp.data.refresh_token
     console.log(`token: ${this.token}, refreshToken: ${this.refreshToken}`)
   }
 }

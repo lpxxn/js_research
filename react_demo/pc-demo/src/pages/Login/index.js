@@ -1,21 +1,31 @@
-import { Form, Input, Button, Checkbox, Card } from 'antd'
+import { Form, Input, Button, Checkbox, Card, message } from 'antd'
 
 import "./index.scss"
 import { useStore } from '@/store'
 
+import { useNavigate } from 'react-router-dom'
+
 const Login = () => {
   const { loginStore } = useStore()
-  function onFinish (values) {
+  const navigate = useNavigate()
+  // const onFinish = async (values) => { // 或者这么写
+  async function onFinish (values) {
     console.log('Success:', values)
-    loginStore.setToken({ mobile: values.phone, code: values.code })
-
+    try {
+      await loginStore.setToken({ mobile: values.phone, code: values.code })
+      // 跳转首页
+      navigate('/')
+      message.success('登录成功')
+    } catch (e) {
+      message.error(e.response?.data?.message || '登录失败')
+    }
   }
 
   return (
     <div className="login">
       <Card title="登录" className="card">
         <Form validateTrigger={['onBlur', 'onChange']}
-          initialValues={{ remember: true, code: '246810' }}
+          initialValues={{ remember: true, code: '246810', phone: '13800138000' }}
           onFinish={onFinish}>
           <Form.Item
             name="phone"

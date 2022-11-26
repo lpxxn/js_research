@@ -17,7 +17,7 @@ http.interceptors.request.use((config) => {
 http.interceptors.response.use((response) => {
   // 2xx 状态码会进入这里
   console.log(response)
-  return response
+  return response.data
 }, (error) => {
   // 非 2xx 状态码会进入这里
   return Promise.reject(error)
