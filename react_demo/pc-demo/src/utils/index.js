@@ -2,9 +2,11 @@
 // 然后统一导出
 
 import { http } from './http'
+import { setToken, getToken, removeToken, TokenInfo } from './token'
 
 export {
-  http
+  http,
+  setToken, getToken, removeToken, TokenInfo
 }
 
 // import {http} from '@/utils'
