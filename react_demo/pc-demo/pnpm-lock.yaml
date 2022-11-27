@@ -7,6 +7,7 @@ specifiers:
   '@testing-library/user-event': ^13.5.0
   antd: ^5.0.1
   axios: ^1.2.0
+  history: ^5.3.0
   mobx: ^6.6.2
   mobx-react-lite: ^3.4.0
   react: ^18.2.0
@@ -23,6 +24,7 @@ dependencies:
   '@testing-library/user-event': registry.npmmirror.com/@testing-library/user-event/13.5.0
   antd: registry.npmmirror.com/antd/5.0.1_biqbaboplfbrettd7655fr4n2y
   axios: registry.npmmirror.com/axios/1.2.0
+  history: registry.npmmirror.com/history/5.3.0
   mobx: registry.npmmirror.com/mobx/6.6.2
   mobx-react-lite: registry.npmmirror.com/mobx-react-lite/3.4.0_qrr2ojv4n7h7ey2xj7njerqqr4
   react: registry.npmmirror.com/react/18.2.0
@@ -6475,6 +6477,14 @@ packages:
     name: he
     version: 1.2.0
     hasBin: true
+
+  registry.npmmirror.com/history/5.3.0:
+    resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/history/-/history-5.3.0.tgz}
+    name: history
+    version: 5.3.0
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.1
+    dev: false
 
   registry.npmmirror.com/hoopy/0.1.4:
     resolution: {integrity: sha512-HRcs+2mr52W0K+x8RzcLzuPPmVIKMSv97RGHy0Ea9y/mpcaK+xTrjICA04KAHi4GRzxliNqNJEFYWHghy3rSfQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hoopy/-/hoopy-0.1.4.tgz}

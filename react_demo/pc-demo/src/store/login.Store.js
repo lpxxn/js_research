@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx'
 import { http, setToken, getToken, TokenInfo } from '@/utils'
 
 class LoginStore {
-  token = ''
+  token = getToken()?.accessToken || ''
   refreshToken = ''
   constructor() {
     // 
