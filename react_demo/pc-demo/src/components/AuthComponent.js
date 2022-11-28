@@ -11,7 +11,7 @@ import { Navigate } from 'react-router-dom'
 function AuthComponment ({ children }) {
   const token = getToken()
   if (token) {
-    return <>children</>
+    return <>{children}</>
   } else {
     return <Navigate to="/login" replace />
   }

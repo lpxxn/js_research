@@ -1,4 +1,4 @@
-$rootHeight: 100%;
+$rootHeight: 100vh;
 html,
 body {
   height: $rootHeight;
@@ -6,4 +6,8 @@ body {
 }
 
 #root {
+  height: $rootHeight;
+  .App {
+    height: $rootHeight;
+  }
 }
