@@ -2,12 +2,14 @@ import React from 'react'
 import './index.scss'
 import { DiffOutlined, EditOutlined, HomeOutlined, LaptopOutlined, LogoutOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu } from 'antd'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, useLocation } from 'react-router-dom'
 import { Popconfirm } from 'antd'
 
 const { Header, Content, Sider } = Layout
 
 const AppLayout = () => {
+  const location = useLocation()
+  console.log(location)
   return (
     <Layout style={{ height: '100vh' }}>
       <Header className='header'>
@@ -24,15 +26,15 @@ const AppLayout = () => {
       </Header>
       <Layout>
         <Sider width={200} className='site-layout-background'>
-          <Menu mode='inline' theme='dark' defaultSelectedKeys={['1']}
+          <Menu mode='inline' theme='dark' defaultSelectedKeys={[location.pathname]}
             style={{ height: '100%', borderRight: 0 }}>
-            <Menu.Item icon={<HomeOutlined />} key="1">
+            <Menu.Item icon={<HomeOutlined />} key="/">
               <Link to={'/'}>数据概览</Link>
             </Menu.Item>
-            <Menu.Item icon={<DiffOutlined />} key="2">
+            <Menu.Item icon={<DiffOutlined />} key="/article">
               <Link to={'/article'}>内容管理</Link>
             </Menu.Item>
-            <Menu.Item icon={<EditOutlined />} key="3">
+            <Menu.Item icon={<EditOutlined />} key="/publish">
               <Link to='/publish'>编辑文章</Link>
             </Menu.Item>
           </Menu>
