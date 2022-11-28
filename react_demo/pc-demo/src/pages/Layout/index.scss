@@ -1,0 +1,27 @@
+.ant-layout-header {
+  padding: 0 !important;
+}
+
+.logo {
+  margin-top: 10px;
+  width: 200px;
+  height: 60px;
+  background: url('~@/assets/ll.png') no-repeat center / 160px auto;
+}
+
+.user-info {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  margin-right: 50px;
+
+  .user-name {
+    margin-right: 20px;
+  }
+
+  .user-logout {
+    display: inline-block;
+    cursor: pointer;
+  }
+}
