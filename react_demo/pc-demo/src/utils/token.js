@@ -1,6 +1,3 @@
-
-
-
 class TokenInfo {
   accessToken = '';
   refreshToken = '';
