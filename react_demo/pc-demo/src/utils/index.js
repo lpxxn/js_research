@@ -3,9 +3,9 @@
 
 import { http } from './http'
 import { setToken, getToken, removeToken, TokenInfo } from './token'
-
+import { history } from './history'
 export {
-  http,
+  http, history,
   setToken, getToken, removeToken, TokenInfo
 }
 

@@ -7,12 +7,17 @@
 
 import { getToken } from '@/utils'
 import { Navigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 function AuthComponment ({ children }) {
   const token = getToken()
+  //const navigate = useNavigate()
   if (token) {
     return <>{children}</>
   } else {
+    console.log('navigate----')
+    // navigate('/login')
+    //return <></>
     return <Navigate to="/login" replace />
   }
 }

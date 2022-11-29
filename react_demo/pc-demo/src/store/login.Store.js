@@ -22,7 +22,6 @@ class LoginStore {
     let tokenInfo = new TokenInfo()
     tokenInfo.accessToken = this.token
     tokenInfo.refreshToken = this.refreshToken
-    debugger
     setToken(tokenInfo)
     console.log(getToken())
     console.log(getToken().refreshToken)

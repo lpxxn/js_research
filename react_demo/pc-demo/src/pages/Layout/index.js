@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './index.scss'
 import { DiffOutlined, EditOutlined, HomeOutlined, LaptopOutlined, LogoutOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu } from 'antd'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { Popconfirm } from 'antd'
+import { useStore } from '@/store'
 
 const { Header, Content, Sider } = Layout
 
 const AppLayout = () => {
   const location = useLocation()
+  // const {pathname} = useLocation()
   console.log(location)
+  const { userStore } = useStore()
+  useEffect(() => {
+    userStore.getUserInfo()
+    console.log('userStore userInfo name', userStore.userInfo?.name)
+  }, [userStore])
+
+
   return (
     <Layout style={{ height: '100vh' }}>
       <Header className='header'>
         <div className='logo' >
           <div className='user-info'>
-            <span className='user-name'>name</span>
+            <span className='user-name'>{userStore.userInfo.name}</span>
             <span className='user-logout'>
               <Popconfirm title="是否退出？" okText="退出" cancelText="取消">
                 <LogoutOutlined /> 退出

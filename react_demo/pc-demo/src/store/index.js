@@ -2,10 +2,12 @@
 // 导出一个统一的方法 useStore
 
 import LoginStore from "./login.Store"
+import UserStore from "./user.Store"
 import React from "react"
 class RootStore {
   constructor() {
     this.loginStore = new LoginStore(this)
+    this.userStore = new UserStore(this)
   }
 }
 
