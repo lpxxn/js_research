@@ -7,6 +7,7 @@ import { Popconfirm } from 'antd'
 import { useStore } from '@/store'
 
 import { observer } from 'mobx-react-lite'
+import { useNavigate } from 'react-router-dom'
 
 const { Header, Content, Sider } = Layout
 
@@ -14,13 +15,16 @@ const AppLayout = () => {
   const location = useLocation()
   // const {pathname} = useLocation()
   console.log(location)
-  const { userStore } = useStore()
+  const { userStore, loginStore } = useStore()
   useEffect(() => {
     userStore.getUserInfo()
     console.log('userStore userInfo name', userStore.userInfo?.name)
   }, [userStore])
-
-
+  const navigate = useNavigate()
+  const onConfirm = () => {
+    loginStore.logout()
+    navigate('/login')
+  }
   return (
     <Layout style={{ height: '100vh' }}>
       <Header className='header'>
@@ -28,7 +32,7 @@ const AppLayout = () => {
           <div className='user-info'>
             <span className='user-name'>{userStore.userInfo.name}</span>
             <span className='user-logout'>
-              <Popconfirm title="是否退出？" okText="退出" cancelText="取消" placement="bottomRight">
+              <Popconfirm title="是否退出？" onConfirm={onConfirm} okText="退出" cancelText="取消" placement="bottomRight">
                 <LogoutOutlined /> 退出
               </Popconfirm>
             </span>
@@ -39,6 +43,7 @@ const AppLayout = () => {
         <Sider width={200} className='site-layout-background'>
           <Menu mode='inline' theme='dark' defaultSelectedKeys={[location.pathname]}
             style={{ height: '100%', borderRight: 0 }}>
+
             <Menu.Item icon={<HomeOutlined />} key="/">
               <Link to={'/'}>数据概览</Link>
             </Menu.Item>
