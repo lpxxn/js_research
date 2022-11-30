@@ -30,6 +30,9 @@ http.interceptors.response.use((response) => {
   if (error.response.status === 401) {
     // 跳回到登录页
     console.log('token过期了')
+    // 这个可以用
+    //window.location.href = '/login'
+    // 这个也可以
     history.push("/login")
   }
   return Promise.reject(error)
