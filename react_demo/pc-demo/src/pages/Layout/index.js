@@ -6,6 +6,8 @@ import { Outlet, Link, useLocation } from 'react-router-dom'
 import { Popconfirm } from 'antd'
 import { useStore } from '@/store'
 
+import { observer } from 'mobx-react-lite'
+
 const { Header, Content, Sider } = Layout
 
 const AppLayout = () => {
@@ -56,7 +58,7 @@ const AppLayout = () => {
   )
 }
 
-export default AppLayout
+export default observer(AppLayout)
 
 // https://ant.design/components/layout-cn
 // https://codesandbox.io/s/c40bxv?file=/package.json:124-134
