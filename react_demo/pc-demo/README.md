@@ -33,6 +33,8 @@ pnpm add react-router-dom
 pnpm add antd
 
 pnpm add -D @craco/craco
+
+pnpm add echarts
 ```
 
 3. 链接 mobx 和 react 的中间件
