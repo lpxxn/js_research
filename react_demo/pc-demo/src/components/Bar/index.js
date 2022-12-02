@@ -1,7 +1,7 @@
 import * as echarts from 'echarts'
 import React, { useRef, useEffect } from 'react'
 
-function Bar () {
+function Bar ({ title, xData = ['x1', 'x2'], yData = [5, 20, 36, 10], stype = { height: 400, width: 400 } }) {
   const domRef = useRef()
   const chartInit = () => {
     // 基于准备好的dom，初始化echarts实例
@@ -9,18 +9,18 @@ function Bar () {
     // 绘制图表
     myChart.setOption({
       title: {
-        text: 'ECharts 入门示例'
+        text: title
       },
       tooltip: {},
       xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        data: xData
       },
       yAxis: {},
       series: [
         {
           name: '销量',
           type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
+          data: yData
         }
       ]
     })
@@ -31,7 +31,7 @@ function Bar () {
 
   return (<div>
     {/* 准备一个挂载节点 */}
-    <div ref={domRef} style={{ width: '400px', height: '400px' }}></div>
+    <div ref={domRef} style={stype}></div>
   </div>)
 }
 
