@@ -1,8 +1,9 @@
 import './index.scss'
 
-import { Card, Breadcrumb, Form, Button, Radio, Select, DatePicker } from 'antd'
+import { Card, Breadcrumb, Form, Button, Radio, Select, DatePicker, Input } from 'antd'
 import { Link } from 'react-router-dom'
 import local from 'antd/es/date-picker/locale/zh_CN'
+const { RangePicker } = DatePicker
 
 const Article = () => {
   return (<div>
@@ -28,21 +29,22 @@ const Article = () => {
             <Radio value={3}>审核失败</Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="频道" name="channel_id">
-          <Select placeholder="清选择文章频道" style={{ width: 120 }}>
-            <Select.Option value="jack">Jack</Select.Option>
-            <Select.Option value="lucy">Lucy</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label="日期" name="date">
-          {/* 传入locale属性 控制中文显示 */}
-          <DatePicker locale={local} />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType='submit' style={{ marginLeft: 80 }}>筛选</Button>
-        </Form.Item>
+        <Input.Group compact>
+          <Form.Item label="频道" name="channel_id">
+            <Select placeholder="清选择文章频道" style={{ width: 120 }}>
+              <Select.Option value="jack">Jack</Select.Option>
+              <Select.Option value="lucy">Lucy</Select.Option>
+            </Select>
+          </Form.Item>
+          <Form.Item label="日期" name="date" style={{ marginLeft: 20 }} >
+            {/* 传入locale属性 控制中文显示 */}
+            <RangePicker locale={local} />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType='submit' style={{ marginLeft: 20 }}>筛选</Button>
+          </Form.Item>
+        </Input.Group>
       </Form>
-
     </Card>
   </div>)
 }
