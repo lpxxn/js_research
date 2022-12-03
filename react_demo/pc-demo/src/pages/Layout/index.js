@@ -41,7 +41,7 @@ const AppLayout = () => {
       </Header>
       <Layout>
         <Sider width={200} className='site-layout-background'>
-          <Menu mode='inline' theme='dark' defaultSelectedKeys={[location.pathname]}
+          <Menu mode='inline' theme='dark' defaultSelectedKeys={[location.pathname]} selectedKeys={[location.pathname]}
             style={{ height: '100%', borderRight: 0 }}>
 
             <Menu.Item icon={<HomeOutlined />} key="/">

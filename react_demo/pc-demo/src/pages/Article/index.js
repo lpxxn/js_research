@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import local from 'antd/es/date-picker/locale/zh_CN'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { http } from '@/utils'
+import { useNavigate } from 'react-router-dom'
 const { RangePicker } = DatePicker
 
 const Article = () => {
@@ -91,7 +92,7 @@ const Article = () => {
       render: data => {
         return (
           <Space size="middle">
-            <Button type='primary' shape='circle' icon={<EditOutlined />} />
+            <Button type='primary' shape='circle' icon={<EditOutlined />} onClick={() => GoPublish(data)} />
             <Button type='primary' shape='circle' danger icon={<DeleteOutlined />} onClick={() => DeleteArticle(data)} />
           </Space>
         )
@@ -107,6 +108,13 @@ const Article = () => {
       page: 1
     })
   }
+  // 编辑
+  const navigate = useNavigate()
+  const GoPublish = (data) => {
+    console.log('GoPublish', data)
+    navigate(`/publish?id=${data.id}`)
+  }
+
   let data = [
     {
       id: '8212',

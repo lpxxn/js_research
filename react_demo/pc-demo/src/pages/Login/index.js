@@ -26,7 +26,7 @@ const Login = () => {
       <Card title="登录" className="card">
         <Form validateTrigger={['onBlur', 'onChange']}
           // 13811111111   13800138000
-          initialValues={{ remember: true, code: '246810', phone: '13811111111' }}
+          initialValues={{ remember: true, code: '246810', phone: '13800138000' }}
           onFinish={onFinish}>
           <Form.Item
             name="phone"
