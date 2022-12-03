@@ -8,20 +8,24 @@ import local from 'antd/es/date-picker/locale/zh_CN'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { http } from '@/utils'
 import { useNavigate } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import { useStore } from '@/store'
+
 const { RangePicker } = DatePicker
 
 const Article = () => {
   // 频道列表管理
-  const [channelList, setChannelList] = useState([])
-  useEffect(() => {
-    // 获取频道列表
-    const loadChannelList = async () => {
-      const resp = await http.get('/channels')
-      console.log('loadChannelList resp', resp.data)
-      setChannelList(resp.data.channels)
-    }
-    loadChannelList()
-  }, [])
+  // const [channelList, setChannelList] = useState([])
+  // useEffect(() => {
+  //   // 获取频道列表
+  //   const loadChannelList = async () => {
+  //     const resp = await http.get('/channels')
+  //     console.log('loadChannelList resp', resp.data)
+  //     setChannelList(resp.data.channels)
+  //   }
+  //   loadChannelList()
+  // }, [])
+  const { channelStore } = useStore()
 
   // 文章列表
   const [articleList, setArticleList] = useState({
@@ -190,7 +194,7 @@ const Article = () => {
         <Input.Group compact>
           <Form.Item label="频道" name="channel_id">
             <Select placeholder="清选择文章频道" style={{ width: 250 }}>
-              {channelList.map(channel => <Select.Option key={channel.id} value={channel.id}>{channel.name}</Select.Option>)}
+              {channelStore.channelList.map(channel => <Select.Option key={channel.id} value={channel.id}>{channel.name}</Select.Option>)}
             </Select>
           </Form.Item>
           <Form.Item label="日期" name="date" style={{ marginLeft: 20 }} >
@@ -219,4 +223,4 @@ const Article = () => {
   </div>)
 }
 
-export default Article
+export default observer(Article)

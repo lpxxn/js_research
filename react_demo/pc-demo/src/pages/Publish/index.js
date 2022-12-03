@@ -8,9 +8,13 @@ import { Space } from 'antd'
 import React, { useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { useStore } from '@/store'
+import { observer } from 'mobx-react-lite'
 
 const Publish = () => {
   const [value, setValue] = useState('')
+
+  const { channelStore } = useStore()
   return (<div className='publish'>
     <Card
       title={
@@ -33,7 +37,7 @@ const Publish = () => {
         </Form.Item>
         <Form.Item label="频道" name="channel_id" rules={[{ required: true, message: "请选择文章频道" }]} >
           <Select placeholder="请选择文章频道" stype={{ width: 400 }}>
-            <Select.Option value={0}>推荐</Select.Option>
+            {channelStore.channelList.map(channel => <Select.Option key={channel.id} value={channel.id}>{channel.name}</Select.Option>)}
           </Select>
         </Form.Item>
         <Form.Item label="封面">
@@ -67,4 +71,4 @@ const Publish = () => {
   </div >)
 }
 
-export default Publish
+export default observer(Publish)

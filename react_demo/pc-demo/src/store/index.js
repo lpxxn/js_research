@@ -3,11 +3,13 @@
 
 import LoginStore from "./login.Store"
 import UserStore from "./user.Store"
+import ChannelStore from "./channel.Store"
 import React from "react"
 class RootStore {
   constructor() {
     this.loginStore = new LoginStore(this)
     this.userStore = new UserStore(this)
+    this.channelStore = new ChannelStore(this)
   }
 }
 

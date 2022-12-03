@@ -15,11 +15,12 @@ const AppLayout = () => {
   const location = useLocation()
   // const {pathname} = useLocation()
   console.log(location)
-  const { userStore, loginStore } = useStore()
+  const { userStore, loginStore, channelStore } = useStore()
   useEffect(() => {
     userStore.getUserInfo()
     console.log('userStore userInfo name', userStore.userInfo?.name)
-  }, [userStore])
+    channelStore.loadChannelList()
+  }, [userStore, channelStore])
   const navigate = useNavigate()
   const onConfirm = () => {
     loginStore.logout()
