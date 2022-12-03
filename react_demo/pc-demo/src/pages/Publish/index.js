@@ -5,9 +5,13 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { FormMethod } from 'react-router-dom'
 import { PlusOutlined } from '@ant-design/icons'
 import { Space } from 'antd'
+import React, { useState } from 'react'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
 const Publish = () => {
-  return (<div>
+  const [value, setValue] = useState('')
+  return (<div className='publish'>
     <Card
       title={
         <Breadcrumb separator=">">
@@ -20,8 +24,10 @@ const Publish = () => {
           </Breadcrumb.Item>
         </Breadcrumb>
       }>
-      <Form labelCol={{ span: 4 }} wrapperCol={{ span: 16 }}>
-        {/* <Form> */}
+      <Form
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 16 }}
+        initialValues={{ type: 1, content: "测试数据" }}>
         <Form.Item label="标题" name="title" rules={[{ required: true, message: '请输入文章标题' }]}>
           <Input placeholder='请输入文章标题' stype={{ width: 400 }} />
         </Form.Item>
@@ -34,27 +40,31 @@ const Publish = () => {
           <Form.Item name="type">
             <Radio.Group style={{ marginTop: 5 }}>
               <Radio value={1}>单图</Radio>
-              <Radio value={2}>三图</Radio>
-              <Radio value={3}>无图</Radio>
+              <Radio value={3}>三图</Radio>
+              <Radio value={0}> 无图</Radio>
             </Radio.Group>
-            <Upload name="image" listType='picture-card' className='avatar-uplodar' showUploadList style={{}}>
+          </Form.Item>
+          <Form.Item>
+            <Upload name="image" listType='picture-card' className='avatar-uplodar'>
               <div style={{ marginTop: 8 }}>
                 <PlusOutlined />
               </div>
             </Upload>
           </Form.Item>
         </Form.Item>
+        {/* 这里的富文本组件 已经被Form.Item 控制 */}
+        {/* 他的输入内容 会在onFinished回调中收集起来 */}
         <Form.Item label="内容" name="content" rules={[{ required: true, message: "请输入文章内容" }]}>
-
+          <ReactQuill theme="snow" value={value} onChange={setValue} />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 4 }}>
           <Space>
-            <Button type="primary" size="large" htmlType="submit" >保存</Button>
+            <Button type="primary" size="large" htmlType="submit" >发布文章</Button>
           </Space>
         </Form.Item>
       </Form>
     </Card>
-  </div>)
+  </div >)
 }
 
 export default Publish

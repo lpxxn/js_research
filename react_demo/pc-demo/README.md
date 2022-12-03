@@ -63,6 +63,16 @@ index.js 项目入口
 
 ```
 
+## 富文本编辑器
+
+https://github.com/zenoamaro/react-quill
+
+```
+npm install react-quill
+
+pnpm add react-quill
+```
+
 ```
 
 ```
