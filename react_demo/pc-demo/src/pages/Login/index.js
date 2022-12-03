@@ -25,7 +25,8 @@ const Login = () => {
     <div className="login">
       <Card title="登录" className="card">
         <Form validateTrigger={['onBlur', 'onChange']}
-          initialValues={{ remember: true, code: '246810', phone: '13800138000' }}
+          // 13811111111   13800138000
+          initialValues={{ remember: true, code: '246810', phone: '13811111111' }}
           onFinish={onFinish}>
           <Form.Item
             name="phone"
