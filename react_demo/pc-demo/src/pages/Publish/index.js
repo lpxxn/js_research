@@ -15,6 +15,14 @@ const Publish = () => {
   const [value, setValue] = useState('')
 
   const { channelStore } = useStore()
+  const [fileList, setFileList] = useState([])
+
+  const onUploadChange = (rsult) => {
+    console.log('info', rsult)
+    const { fileList } = rsult
+    setFileList(fileList)
+  }
+
   return (<div className='publish'>
     <Card
       title={
@@ -49,14 +57,14 @@ const Publish = () => {
             </Radio.Group>
           </Form.Item>
           <Form.Item>
-            <Upload name="image" listType='picture-card' className='avatar-uplodar'>
+            <Upload name="image" listType='picture-card' className='avatar-uplodar' showUploadList action="http://geek.itheima.net/v1_0/upload" fileList={fileList} onChange={onUploadChange}>
               <div style={{ marginTop: 8 }}>
                 <PlusOutlined />
               </div>
             </Upload>
           </Form.Item>
         </Form.Item>
-        {/* 这里的富文本组件 已经被Form.Item 控制 */}
+        {/* 这里的富文本组件 已经被FoonUploadChange
         {/* 他的输入内容 会在onFinished回调中收集起来 */}
         <Form.Item label="内容" name="content" rules={[{ required: true, message: "请输入文章内容" }]}>
           <ReactQuill theme="snow" value={value} onChange={setValue} />
