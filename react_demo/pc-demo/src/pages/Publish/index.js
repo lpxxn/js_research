@@ -22,6 +22,16 @@ const Publish = () => {
     const { fileList } = rsult
     setFileList(fileList)
   }
+  const onFinish = (values) => {
+    console.log('onFinish:', values)
+  }
+
+  // 切换图片
+  const [imgCount, setImageCount] = useState(1)
+  const typeChaned = (e) => {
+    console.log('typeChaned', e, 'targetValue', e.target.value)
+    setImageCount(e.target.value)
+  }
 
   return (<div className='publish'>
     <Card
@@ -39,7 +49,7 @@ const Publish = () => {
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 16 }}
-        initialValues={{ type: 1, content: "测试数据" }}>
+        initialValues={{ type: 1, content: "测试数据" }} onFinish={onFinish}>
         <Form.Item label="标题" name="title" rules={[{ required: true, message: '请输入文章标题' }]}>
           <Input placeholder='请输入文章标题' stype={{ width: 400 }} />
         </Form.Item>
@@ -50,19 +60,24 @@ const Publish = () => {
         </Form.Item>
         <Form.Item label="封面">
           <Form.Item name="type">
-            <Radio.Group style={{ marginTop: 5 }}>
+            <Radio.Group style={{ marginTop: 5 }} onChange={typeChaned}>
               <Radio value={1}>单图</Radio>
               <Radio value={3}>三图</Radio>
               <Radio value={0}> 无图</Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item>
-            <Upload name="image" listType='picture-card' className='avatar-uplodar' showUploadList action="http://geek.itheima.net/v1_0/upload" fileList={fileList} onChange={onUploadChange}>
-              <div style={{ marginTop: 8 }}>
-                <PlusOutlined />
-              </div>
-            </Upload>
-          </Form.Item>
+          {
+            imgCount > 0 && (
+              <Form.Item>
+                <Upload name="image" listType='picture-card' className='avatar-uplodar' showUploadList action="http://geek.itheima.net/v1_0/upload" fileList={fileList} onChange={onUploadChange}>
+                  <div style={{ marginTop: 8 }}>
+                    <PlusOutlined />
+                  </div>
+                </Upload>
+              </Form.Item>
+            )
+          }
+
         </Form.Item>
         {/* 这里的富文本组件 已经被FoonUploadChange
         {/* 他的输入内容 会在onFinished回调中收集起来 */}
