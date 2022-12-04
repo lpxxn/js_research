@@ -5,11 +5,12 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { FormMethod } from 'react-router-dom'
 import { PlusOutlined } from '@ant-design/icons'
 import { Space } from 'antd'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
+import { http } from '@/utils'
 
 const Publish = () => {
   const [value, setValue] = useState('')
@@ -21,17 +22,45 @@ const Publish = () => {
     console.log('info', rsult)
     const { fileList } = rsult
     setFileList(fileList)
+    // 同时把图片列表保存到 cacheImgList里
+    cacheImgList.current = fileList
   }
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('onFinish:', values)
+    const { channel_id, content, title, type } = values
+    const params = {
+      channel_id, content, title, type,
+      cover: {
+        type: type,
+        images: fileList.map(item => item.response?.data?.url)
+      }
+    }
+    console.log('params', params)
+    await http.post('/mp/articles?draft=false', params)
   }
 
   // 切换图片
   const [imgCount, setImageCount] = useState(1)
   const typeChaned = (e) => {
     console.log('typeChaned', e, 'targetValue', e.target.value)
-    setImageCount(e.target.value)
+    const rawCount = e.target.value
+    setImageCount(rawCount)
+
+    // 无图
+    if (cacheImgList.current.length === 0) {
+      return
+    }
+    // 从缓存里取出图片列表
+    if (rawCount === 1) {
+      // const img = cacheImgList.current ? [cacheImgList.current[0]] : []
+      const img = cacheImgList.current[0]
+      setFileList([img])
+    } else if (rawCount === 3) {
+      setFileList(cacheImgList.current)
+    }
   }
+  // useRef 可以用于获取dom，也可以当作仓库
+  const cacheImgList = useRef([])
 
   return (<div className='publish'>
     <Card
@@ -69,7 +98,12 @@ const Publish = () => {
           {
             imgCount > 0 && (
               <Form.Item>
-                <Upload name="image" listType='picture-card' className='avatar-uplodar' showUploadList action="http://geek.itheima.net/v1_0/upload" fileList={fileList} onChange={onUploadChange}>
+                <Upload name="image" listType='picture-card' className='avatar-uplodar' showUploadList action="http://geek.itheima.net/v1_0/upload"
+                  fileList={fileList}
+                  onChange={onUploadChange}
+                  multiple={imgCount > 1}
+                  maxCount={imgCount}
+                >
                   <div style={{ marginTop: 8 }}>
                     <PlusOutlined />
                   </div>

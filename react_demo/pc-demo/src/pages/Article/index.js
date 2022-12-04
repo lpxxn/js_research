@@ -15,16 +15,16 @@ const { RangePicker } = DatePicker
 
 const Article = () => {
   // 频道列表管理
-  // const [channelList, setChannelList] = useState([])
-  // useEffect(() => {
-  //   // 获取频道列表
-  //   const loadChannelList = async () => {
-  //     const resp = await http.get('/channels')
-  //     console.log('loadChannelList resp', resp.data)
-  //     setChannelList(resp.data.channels)
-  //   }
-  //   loadChannelList()
-  // }, [])
+  const [channelList, setChannelList] = useState([])
+  useEffect(() => {
+    // 获取频道列表
+    const loadChannelList = async () => {
+      const resp = await http.get('/channels')
+      console.log('loadChannelList resp', resp.data)
+      setChannelList(resp.data.channels)
+    }
+    loadChannelList()
+  }, [])
   const { channelStore } = useStore()
 
   // 文章列表
@@ -62,7 +62,11 @@ const Article = () => {
       dataIndex: 'cover',
       width: 120,
       render: cover => {
-        return <img src={cover.images?.get(0) || img404} width={80} height={60} alt="" />
+        let image = img404
+        if (cover.images.length > 0) {
+          image = cover.images[0]
+        }
+        return <img src={image} width={80} height={60} alt="" />
       }
     },
     {
@@ -208,8 +212,8 @@ const Article = () => {
       </Form>
     </Card>
     <Card title={`根据筛选条件共查询到 ${articleList.count} 条结果：`}>
-      <Table rowKey="id" columns={columns} dataSource={data}
-        // {/* <Table rowKey="id" columns={columns} dataSource={articleList.list} */}
+      {/* <Table rowKey="id" columns={columns} dataSource={data} */}
+      <Table rowKey="id" columns={columns} dataSource={articleList.list}
         pagination={
           {
             position: ['bottomRight'],
