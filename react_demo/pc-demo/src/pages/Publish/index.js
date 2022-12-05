@@ -5,7 +5,7 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { FormMethod } from 'react-router-dom'
 import { PlusOutlined } from '@ant-design/icons'
 import { Space } from 'antd'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useStore } from '@/store'
@@ -13,17 +13,57 @@ import { observer } from 'mobx-react-lite'
 import { http } from '@/utils'
 
 const Publish = () => {
+  console.log('Publish')
+  // 得到 路由参数 id
+  const [searchParams] = useSearchParams()
+  const id = searchParams.get('id')
+  console.log('id', id)
+  const form = useRef(null)
+  // 数据回填 id调用接口 1. 表单回填 2. 暂存列表 3. Upload组件 fileList
+  useEffect(() => {
+    const loadDetail = async () => {
+      const resp = await http.get(`/mp/articles/${id}`)
+      console.log('loadDetail resp', resp.data)
+
+      const data = resp.data
+      form.current.setFieldsValue({
+        ...data,
+        type: data.cover.type
+      })
+      // 回填 upload
+      let imgList = data.cover.images.map((item) => { return { url: item } })
+      setFileList(imgList)
+      // 暂存列表保存一份
+      cacheImgList.current = imgList
+      // 图片
+      setImageCount(data.cover.type)
+    }
+    if (!id) return
+    loadDetail()
+
+  }, [id, form])
+
   const [value, setValue] = useState('')
 
   const { channelStore } = useStore()
   const [fileList, setFileList] = useState([])
 
   const onUploadChange = (rsult) => {
-    console.log('info', rsult)
     const { fileList } = rsult
-    setFileList(fileList)
+    console.log('info', rsult, 'fileList', fileList)
+    const formatList = fileList.map(file => {
+      // 上传完毕
+      if (file.response) {
+        return {
+          url: file.response.data.url
+        }
+      }
+      return file
+    })
+    console.log('formatList', formatList)
+    setFileList(formatList)
     // 同时把图片列表保存到 cacheImgList里
-    cacheImgList.current = fileList
+    cacheImgList.current = formatList
   }
   const onFinish = async (values) => {
     console.log('onFinish:', values)
@@ -32,16 +72,20 @@ const Publish = () => {
       channel_id, content, title, type,
       cover: {
         type: type,
-        images: fileList.map(item => item.response?.data?.url)
+        images: fileList.map(item => item.url)
       }
     }
     console.log('params', params)
-    await http.post('/mp/articles?draft=false', params)
+    if (id) {
+      await http.put(`/mp/articles/${id}?draft=false`, params)
+    } else {
+      await http.post('/mp/articles?draft=false', params)
+    }
   }
-
+  console.log('---------------')
   // 切换图片
   const [imgCount, setImageCount] = useState(1)
-  const typeChaned = (e) => {
+  const radioTypeChaned = (e) => {
     console.log('typeChaned', e, 'targetValue', e.target.value)
     const rawCount = e.target.value
     setImageCount(rawCount)
@@ -70,12 +114,11 @@ const Publish = () => {
             <Link to="/">首页</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            {/* {id ? '编辑文章' : '发布文章'} */}
-
+            {id ? '编辑文章' : '发布文章'}
           </Breadcrumb.Item>
         </Breadcrumb>
       }>
-      <Form
+      <Form ref={form}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ type: 1, content: "测试数据" }} onFinish={onFinish}>
@@ -89,7 +132,7 @@ const Publish = () => {
         </Form.Item>
         <Form.Item label="封面">
           <Form.Item name="type">
-            <Radio.Group style={{ marginTop: 5 }} onChange={typeChaned}>
+            <Radio.Group style={{ marginTop: 5 }} onChange={radioTypeChaned}>
               <Radio value={1}>单图</Radio>
               <Radio value={3}>三图</Radio>
               <Radio value={0}> 无图</Radio>
