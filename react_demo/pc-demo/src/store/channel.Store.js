@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { http } from '@/utils'
+
 class ChannelStore {
   channelList = []
   constructor() {

@@ -73,6 +73,13 @@ npm install react-quill
 pnpm add react-quill
 ```
 
-```
+## build 打包
 
+```
+pnpm build
+
+
+会多两行输出项
+npm install -g serve
+  serve -s build
 ```
