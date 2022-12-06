@@ -73,6 +73,12 @@ npm install react-quill
 pnpm add react-quill
 ```
 
+https://velog.io/@jsy7517/React-Quill%EC%97%90%EC%84%9C-Image-Resize-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
+```
+pnpm add quill-image-resize
+```
+
 ## build 打包
 
 ```
@@ -83,3 +89,14 @@ pnpm build
 npm install -g serve
   serve -s build
 ```
+
+## 分析
+
+https://github.com/danvk/source-map-explorer
+
+```
+
+"report": "source-map-explorer 'build/static/js/*.js'"
+```
+
+pnpm report
