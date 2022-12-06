@@ -73,6 +73,14 @@ npm install react-quill
 pnpm add react-quill
 ```
 
+https://codesandbox.io/s/ry8vy?file=/src/Editor.js
+
+```
+pnpm add react-quilljs
+pnpm add quill-image-resize-module-react
+pnpm add quill-blot-formatter
+```
+
 ## build 打包
 
 ```
@@ -83,3 +91,14 @@ pnpm build
 npm install -g serve
   serve -s build
 ```
+
+## 分析
+
+https://github.com/danvk/source-map-explorer
+
+```
+
+"report": "source-map-explorer 'build/static/js/*.js'"
+```
+
+pnpm report

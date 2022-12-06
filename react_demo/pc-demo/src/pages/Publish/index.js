@@ -12,6 +12,8 @@ import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import { http } from '@/utils'
 
+import Editor from '@/components/Editor/EditorWithUseQuill'
+
 const Publish = () => {
   console.log('Publish')
   // 得到 路由参数 id
@@ -159,7 +161,8 @@ const Publish = () => {
         {/* 这里的富文本组件 已经被FoonUploadChange
         {/* 他的输入内容 会在onFinished回调中收集起来 */}
         <Form.Item label="内容" name="content" rules={[{ required: true, message: "请输入文章内容" }]}>
-          <ReactQuill theme="snow" value={value} onChange={setValue} />
+          {/* <ReactQuill theme="snow" value={value} onChange={setValue} /> */}
+          <Editor value={value} onChange={setValue} />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 4 }}>
           <Space>
