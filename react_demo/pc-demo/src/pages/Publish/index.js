@@ -2,17 +2,17 @@ import { Card, Breadcrumb, Form, Input, Select, Radio, Upload, Button } from 'an
 import './index.scss'
 
 import { useSearchParams, Link } from 'react-router-dom'
-import { FormMethod } from 'react-router-dom'
 import { PlusOutlined } from '@ant-design/icons'
 import { Space } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
-import ReactQuill from 'react-quill'
+import ReactQuill, { Quill } from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import { http } from '@/utils'
 
-import Editor from '@/components/Editor/EditorWithUseQuill'
+import ImageResize from 'quill-image-resize'
+Quill.register('modules/ImageResize', ImageResize)
 
 const Publish = () => {
   console.log('Publish')
@@ -161,8 +161,9 @@ const Publish = () => {
         {/* 这里的富文本组件 已经被FoonUploadChange
         {/* 他的输入内容 会在onFinished回调中收集起来 */}
         <Form.Item label="内容" name="content" rules={[{ required: true, message: "请输入文章内容" }]}>
-          {/* <ReactQuill theme="snow" value={value} onChange={setValue} /> */}
-          <Editor value={value} onChange={setValue} />
+          <ReactQuill theme="snow" value={value} onChange={setValue} modules={Publish.modules} />
+          {/* // formats={Publish.formats} /> */}
+          {/* <Editor value={value} onChange={setValue} /> */}
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 4 }}>
           <Space>
@@ -175,3 +176,55 @@ const Publish = () => {
 }
 
 export default observer(Publish)
+
+
+/*
+ * Quill modules to attach to editor
+ * See https://quilljs.com/docs/modules/ for complete options
+ */
+Publish.modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' }
+    ],
+    ['link', 'image', 'video'],
+    ['clean']
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false
+  },
+  ImageResize: {
+    parchment: Quill.import('parchment')
+  }
+}
+
+/*
+ * Quill editor formats
+ * See https://quilljs.com/docs/formats/
+ */
+// Publish.formats = [
+//   'header',
+//   'font',
+//   'size',
+//   'bold',
+//   'italic',
+//   'underline',
+//   'strike',
+//   'blockquote',
+//   'list',
+//   'bullet',
+//   'indent',
+//   'link',
+//   'image',
+//   'video',
+//   'alt',
+//   'height',
+//   'width'
+// ]

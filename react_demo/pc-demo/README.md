@@ -73,12 +73,10 @@ npm install react-quill
 pnpm add react-quill
 ```
 
-https://codesandbox.io/s/ry8vy?file=/src/Editor.js
+https://velog.io/@jsy7517/React-Quill%EC%97%90%EC%84%9C-Image-Resize-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
 
 ```
-pnpm add react-quilljs
-pnpm add quill-image-resize-module-react
-pnpm add quill-blot-formatter
+pnpm add quill-image-resize
 ```
 
 ## build 打包
