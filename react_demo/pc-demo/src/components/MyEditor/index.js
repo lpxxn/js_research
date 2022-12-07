@@ -1,52 +1,45 @@
 import React from 'react'
-import ReactQuill from 'react-quill' // 引入 ReactQuill 组件
+import ReactQuill, { Quill } from 'react-quill' // 引入 ReactQuill 组件
+import ImageResize from 'quill-image-resize'
 
-class MyEditor extends React.Component {
-  // 构造函数
-  constructor(props) {
-    super(props)
-    this.state = {
-      text: ''
+Quill.register('modules/ImageResize', ImageResize)
+function MyEditor ({ value, onChange }) {
+
+  const modules = {
+    toolbar: [
+      [{ header: '1' }, { header: '2' }, { font: [] }],
+      [{ size: [] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [
+        { list: 'ordered' },
+        { list: 'bullet' },
+        { indent: '-1' },
+        { indent: '+1' }
+      ],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false
+    },
+    ImageResize: {
+      parchment: Quill.import('parchment')
     }
   }
 
-  // 处理编辑器内容变化
-  handleChange (value) {
-    this.setState({ text: value })
-  }
-
   // 渲染组件
-  render () {
-    return (
-      <ReactQuill
-        value={this.state.text}
-        onChange={this.handleChange}
-        modules={{
-          // 启用图片模块
-          image: true,
-          // 自定义图片模块，支持拖拽改变大小
-          ImageResize: {
-            modules: ['Resize', 'DisplaySize', 'Toolbar'],
-            handleStyles: {
-              backgroundColor: 'black',
-              border: 'none',
-              color: 'white'
-            },
-            displayStyles: {
-              backgroundColor: 'black',
-              border: 'none',
-              color: 'white'
-            },
-            toolbarStyles: {
-              backgroundColor: 'black',
-              color: 'white'
-            }
-          }
-        }}
-      />
-    )
-  }
+  return (
+    <ReactQuill
+      value={value}
+      onChange={onChange}
+      modules={modules}
+    />
+  )
+
 }
+
+export default MyEditor
 /*
 import MyEditor from './MyEditor'; // 引入组件
 
