@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactQuill, { Quill } from 'react-quill' // 引入 ReactQuill 组件
 import ImageResize from 'quill-image-resize'
-
+import 'react-quill/dist/quill.snow.css'
 Quill.register('modules/ImageResize', ImageResize)
 function MyEditor ({ value, onChange }) {
 
@@ -31,6 +31,7 @@ function MyEditor ({ value, onChange }) {
   // 渲染组件
   return (
     <ReactQuill
+      theme="snow"
       value={value}
       onChange={onChange}
       modules={modules}
