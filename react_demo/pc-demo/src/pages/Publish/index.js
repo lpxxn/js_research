@@ -11,6 +11,8 @@ import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import { http } from '@/utils'
 import Myeditor from '@/components/MyEditor'
+import { useNavigate } from 'react-router-dom'
+import { message } from 'antd'
 // import ImageResize from 'quill-image-resize'
 // Quill.register('modules/ImageResize', ImageResize)
 
@@ -67,6 +69,8 @@ const Publish = () => {
     // 同时把图片列表保存到 cacheImgList里
     cacheImgList.current = formatList
   }
+  // 保存文章
+  const navigate = useNavigate()
   const onFinish = async (values) => {
     console.log('onFinish:', values)
     const { channel_id, content, title, type } = values
@@ -83,6 +87,8 @@ const Publish = () => {
     } else {
       await http.post('/mp/articles?draft=false', params)
     }
+    navigate('/article')
+    message.success(`${id ? '更新' : '发布'}文章成功`)
   }
   console.log('---------------')
   // 切换图片
