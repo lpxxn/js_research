@@ -33,3 +33,7 @@ jsx 并不是标准的 JS 语法，是 JS 的语法扩展，浏览器并不认�
 https://gitee.com/react-cp/react-pc-code
 
 https://gitee.com/react-course-series
+
+##
+
+JS 中出现() 表示其中想要写 html 比如组件的 return (<div></div>)
