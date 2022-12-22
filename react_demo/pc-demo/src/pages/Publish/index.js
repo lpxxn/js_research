@@ -11,8 +11,6 @@ import { http } from '@/utils'
 import Myeditor from '@/components/MyEditor'
 import { useNavigate } from 'react-router-dom'
 import { message } from 'antd'
-// import ImageResize from 'quill-image-resize'
-// Quill.register('modules/ImageResize', ImageResize)
 
 const Publish = () => {
   console.log('Publish')

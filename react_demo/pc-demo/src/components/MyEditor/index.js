@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactQuill, { Quill } from 'react-quill' // 引入 ReactQuill 组件
-import ImageResize from 'quill-image-resize'
+// import ImageResize from 'quill-image-resize'
 import 'react-quill/dist/quill.snow.css'
-Quill.register('modules/ImageResize', ImageResize)
-function MyEditor ({ value, onChange }) {
+// Quill.register('modules/ImageResize', ImageResize)
+import ResizeModule from "@botom/quill-resize-module"
 
+Quill.register("modules/resize", ResizeModule)
+
+function MyEditor ({ value, onChange }) {
   const modules = {
     toolbar: [
       [{ header: '1' }, { header: '2' }, { font: [] }],
@@ -23,9 +26,19 @@ function MyEditor ({ value, onChange }) {
       // toggle to add extra line breaks when pasting HTML:
       matchVisual: false
     },
-    ImageResize: {
-      parchment: Quill.import('parchment')
-    }
+    // ImageResize: {
+    //   parchment: Quill.import('parchment')
+    // }
+    resize: {
+      locale: {
+        // change them depending on your language
+        altTip: "Hold down the alt key to zoom",
+        floatLeft: "Left",
+        floatRight: "Right",
+        center: "Center",
+        restore: "Restore",
+      },
+    },
   }
 
   // 渲染组件
