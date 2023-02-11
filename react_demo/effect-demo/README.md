@@ -22,10 +22,6 @@ npm install mobx mobx-react --save
 pnpm add mobx mobx-react-lite
 ```
 
-```
-
-```
-
 3. 链接 mobx 和 react 的中间件
 
 https://codesandbox.io/s/gifted-frog-bk6xkh?file=/src/index.js
