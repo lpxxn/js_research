@@ -11,6 +11,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js', // [name] 会被 entry 中的 key 替换
+    // 也可以加一些id hash
+    // filename: '[name].[id].[hash].js',
     clean: true
   }
 }
