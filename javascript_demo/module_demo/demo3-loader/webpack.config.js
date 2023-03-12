@@ -4,6 +4,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'] // 从后向前调用
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset/resource' // 图片资源，不会被打包到js中，而是单独打包成一个文件，用type来指定
       }
     ]
   }
@@ -22,4 +26,6 @@ webpack 默认情况下，只能打包处理 js 类型的文件，无法处理�
   2. 如果能找到对应的规则，就会调用对应的 loader 处理这种文件类型；
   3. 在调用 loader 的时候，是从后往前调用的；
   4. 当最后一个 loader 调用完毕，会把处理的结果，直接交给 webpack 进行打包合并，最终输出到 bundle.js 中去；
+
+
 */
