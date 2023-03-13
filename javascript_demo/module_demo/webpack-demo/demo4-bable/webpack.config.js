@@ -21,7 +21,8 @@ module.exports = {
       //title: 'hello world',
       template: './src/index.html'
     })
-  ]
+  ],
+  devtool: 'inline-source-map'
 }
 
 /*

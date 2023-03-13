@@ -18,3 +18,25 @@ webpack, vite
   }
   ```
   运行 `yarn build`  打包
+  或者安装webpack-dev-server
+  npm install --save-dev webpack-dev-server 或者 yarn add -D webpack-dev-server
+
+  使用webpack-dev-server，静态文件是打包到server里的。在发布之前要 build一下，不然dist里没有。
+  yarn webpack serve
+  1. 在package.json中配置
+  ```json
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack serve"
+  },
+
+  ``` 
+
+  source-map: 用于调试，打包后的代码，不容易调试，所以要生成source-map文件，方便调试
+  ```js
+  module.exports = {
+    mode: 'development',
+    devtool: 'inline-source-map'
+  }
+  ```
