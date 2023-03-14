@@ -37,6 +37,9 @@ function person3 (firstname, lastname, age) {
         this.firstname = name
     }
 }
+p3 = person3("a", "b", 1)
+console.log(p3)
+
 // 使用 prototype 为构造器添加新属性
 person3.prototype.nationality = "En"
 
