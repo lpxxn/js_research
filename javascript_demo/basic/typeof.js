@@ -1,15 +1,14 @@
-
-a1 = typeof "abcdef"
-console.log(a1);
+a1 = typeof 'abcdef'
+console.log(a1)
 
 a1 = typeof 1
-console.log(a1);
+console.log(a1)
 
 a1 = typeof [1, 2, 3]
-console.log(a1);
+console.log(a1)
 
-a1 = typeof {name: "a"}
-console.log(a1);
+a1 = typeof { name: 'a' }
+console.log(a1)
 
 // null 为对象
 // undefined 为变量
@@ -17,16 +16,17 @@ console.log(a1);
 var p = null
 console.log(typeof p)
 
-var p = undefined;
-console.log(typeof p);
+var p = undefined
+console.log(typeof p)
 
-console.log("null", typeof null);
-console.log("undefined", typeof undefined);
+console.log('null', typeof null)
+console.log('undefined', typeof undefined)
 
-console.log("null == undefined", null == undefined);
-console.log("null === undefined", null === undefined);
+console.log('null == undefined', null == undefined)
+console.log('null === undefined', null === undefined)
 
 /*
+ECMAScript有5种原始类型（primitive type），即Undefined、Null、Boolean、Number和String。ECMA-262把术语类型（type）定义为值的一个集合，每种原始类型定义了它包含的值的范围及其字面量表示形式。
 1、定义
 
  （1）undefined：是所有没有赋值变量的默认值，自动赋值。
