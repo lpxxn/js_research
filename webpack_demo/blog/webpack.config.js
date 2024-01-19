@@ -6,11 +6,15 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 module.exports = {
     mode: "development",
     devtool: "inline-source-map",
-    entry: "./src/index.js",
+    entry: {
+        dist: "./src/index.js",
+        my_c: "./src/c.js"
+    },
     output: {
-        filename: "dist.js",
-        //firstname: "[name].[contenthash].js",
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "dist"),
+        // filename: "dist.js",
+        filename: "[name].js",
+        clean: true
     },
     // 压缩
     optimization: {

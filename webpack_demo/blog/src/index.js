@@ -1,5 +1,5 @@
 import {getBlogPosts} from "./data";
-
+import _ from 'loadsh';
 // 需要 css-loader
 import "./style.css";
 import DoraemonImg from "./assets/images/doraemon1.jpg";
@@ -27,3 +27,10 @@ document.body.appendChild(img);
 const h1 = document.createElement("h1");
 h1.innerText = "hello world222";
 document.body.appendChild(h1);
+
+const element = document.createElement('div');
+
+// lodash 现在使用 import 引入。
+element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+element.classList.add('hello');
+document.body.appendChild(element);
