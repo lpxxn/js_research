@@ -6,6 +6,7 @@ import DoraemonImg from "./assets/images/doraemon1.jpg";
 
 // 导入多级目录的模块
 import "./test/date/printDate";
+import "./test/date/plumb";
 
 console.log("hello world");
 console.log(getBlogPosts());
