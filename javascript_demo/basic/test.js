@@ -1,17 +1,17 @@
-let arr = [1, 2, 3];
-
-let obj = {a: 1, b: 2};
+let arr = [1, 2, 3]
+let arr2 = arr.map(v => v + 1)
+let obj = { a: 1, b: 2 }
 
 // 解构
-let [e, d] = arr;
-let {a, b, c} = obj;
-console.log(e, d, a, b, c);
+let [e, d] = arr
+let { a, b, c } = obj
+console.log(e, d, a, b, c)
 
-let message = 'Hello';
-let [a1, b1] = message;
-let [x, y, ...z] = message;
+let message = 'Hello'
+let [a1, b1] = message
+let [x, y, ...z] = message
 console.log(a1, b1)
-console.log(x, y, z);
+console.log(x, y, z)
 
 /*
 解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性值从对象/数组中取出,赋值给其他变
