@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react'
 import './index.scss'
-import { DiffOutlined, EditOutlined, HomeOutlined, LaptopOutlined, LogoutOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  DiffOutlined,
+  EditOutlined,
+  HomeOutlined,
+  LaptopOutlined,
+  LogoutOutlined,
+  NotificationOutlined,
+  UserOutlined
+} from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu } from 'antd'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { Popconfirm } from 'antd'
@@ -29,29 +37,38 @@ const AppLayout = () => {
   return (
     <Layout style={{ height: '100vh' }}>
       <Header className='header'>
-        <div className='logo' >
-          <div className='user-info'>
-            <span className='user-name'>{userStore.userInfo.name}</span>
-            <span className='user-logout'>
-              <Popconfirm title="是否退出？" onConfirm={onConfirm} okText="退出" cancelText="取消" placement="bottomRight">
-                <LogoutOutlined /> 退出
-              </Popconfirm>
-            </span>
-          </div>
+        <div className='logo'></div>
+        <div className='user-info'>
+          <span className='user-name'>{userStore.userInfo.name}</span>
+          <span className='user-logout'>
+            <Popconfirm
+              title='是否退出？'
+              onConfirm={onConfirm}
+              okText='退出'
+              cancelText='取消'
+              placement='bottomRight'
+            >
+              <LogoutOutlined /> 退出
+            </Popconfirm>
+          </span>
         </div>
       </Header>
       <Layout>
         <Sider width={200} className='site-layout-background'>
-          <Menu mode='inline' theme='dark' defaultSelectedKeys={[location.pathname]} selectedKeys={[location.pathname]}
-            style={{ height: '100%', borderRight: 0 }}>
-
-            <Menu.Item icon={<HomeOutlined />} key="/">
+          <Menu
+            mode='inline'
+            theme='dark'
+            defaultSelectedKeys={[location.pathname]}
+            selectedKeys={[location.pathname]}
+            style={{ height: '100%', borderRight: 0 }}
+          >
+            <Menu.Item icon={<HomeOutlined />} key='/'>
               <Link to={'/'}>数据概览</Link>
             </Menu.Item>
-            <Menu.Item icon={<DiffOutlined />} key="/article">
+            <Menu.Item icon={<DiffOutlined />} key='/article'>
               <Link to={'/article'}>内容管理</Link>
             </Menu.Item>
-            <Menu.Item icon={<EditOutlined />} key="/publish">
+            <Menu.Item icon={<EditOutlined />} key='/publish'>
               <Link to='/publish'>编辑文章</Link>
             </Menu.Item>
           </Menu>

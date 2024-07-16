@@ -30,3 +30,8 @@ obj4 = {
   }
 }
 console.log(obj4)
+
+obj4 = { obj1 }
+// equal: obj4 = {obj1: obj1}
+
+console.log(obj4)
