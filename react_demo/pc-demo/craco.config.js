@@ -1,4 +1,3 @@
-
 const { whenProd, getPlugin, pluginByName } = require('@craco/craco')
 const path = require('path')
 
@@ -9,7 +8,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src')
     },
 
-    configure: (webpackConfig) => {
+    configure: webpackConfig => {
       let cdn = {
         js: [],
         css: []
@@ -20,7 +19,7 @@ module.exports = {
         // value: cdn文件中 挂载于全局的变量名称 为了替换之前在开发环境下,通过import 导入的 react / react-dom
         webpackConfig.externals = {
           react: 'React',
-          'react-dom': 'ReactDOM',
+          'react-dom': 'ReactDOM'
         }
         // 配置现成的cdn 资源数组 现在是公共为了测试
         // 实际开发的时候 用公司自己花钱买的cdn服务器
@@ -30,7 +29,7 @@ module.exports = {
           // ],
           js: [
             'https://cdnjs.cloudflare.com/ajax/libs/react/18.1.0/umd/react.production.min.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.1.0/umd/react-dom.production.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.1.0/umd/react-dom.production.min.js'
           ],
           css: []
         }
