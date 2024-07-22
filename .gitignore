@@ -9,3 +9,4 @@ dist
 .npmrc
 build
 .vscode
+.sass-cache

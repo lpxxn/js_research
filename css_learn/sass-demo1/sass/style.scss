@@ -1,3 +1,120 @@
-.header {
-  background-color: black;
+@import 'base';// 不需要有_也不需要有.scss
+
+// .header {
+//   background-color: black;
+//   font-size: 15px;
+// }
+ul {
+  font-size: 10px;
+  li {
+    list-style: none;
+  }
 }
+
+// 变量
+$color: 'red';
+$background-color: blue;
+$font-size: 15px;
+
+div.box {
+  color: $color;
+  font-size: $font-size;
+}
+
+.nav {
+  height: 100px;
+  a {
+    display: block;
+    &:hover { // 如果不加& 会变成  .nav a :hover 中间有个空格
+      color: $background-color;
+    }
+  }
+  // 引用父选择器
+  &-text { // 等于 .nav-text 
+    font-size: 15px;
+  }
+  & &-text2 { // .nav .nav-text2
+    font-size: 20px;
+  }
+}
+
+// ------嵌套属性
+// b2 {
+//   font-family: Arial, Helvetica, sans-serif;
+//   font-size: 15px;
+//   font-weight: normal;
+// }
+// 都有font-
+b2 {
+  font: {
+    family: Arial, Helvetica, sans-serif;
+    size: 15px;
+    weight: normal;
+  }
+}
+
+// .nav {
+//   border: 1px solid #000;
+//   border-left: 0;
+//   border-right: 0;
+// }
+// 后面两个有border开关
+.nav {
+  border: 1px solid #000 {
+    left: 0;
+    right: 0;
+  }
+}
+
+// mixin 就是js里的函数
+
+// @mixin 名字(参数, 参数 ...) {
+// }
+@mixin alert {
+  color: #000;
+  background-color: #fcf8e3;
+  a {
+    color: #664c2b;
+  }
+}
+
+.alert-warning {
+  @include alert
+}
+
+@mixin alert2($text-color, $background) {
+  color: $text-color;
+  background-color: $background;
+  a {
+    color: darken($color: $text-color, $amount: 10%);
+  }
+}
+
+.alert-warning2 {
+  @include alert2(#8a6db5, #fcf8e3)
+}
+// 也可以用参数名，这样顺序就可以自定义
+.alert-warning3 {
+  @include alert2($background: #fcf8e3, $text-color: #8a6db5)
+}
+
+
+// ----- 继承 --------
+
+.alertFather {
+  padding: 15px;
+}
+.alertFather a {
+  font-weight: bold;
+}
+// .alert-info里同时会有 .alertFather 和 .a的样式
+.alert-info {
+  @extend .alertFather;
+  background-color: #d9edf7;
+}
+/* 转换成群组转换器
+CSS 群组选择器（Group Selector）允许你将相同的样式应用于多个不同的选择器，通过逗号将它们分隔开。这种方法可以减少代码重复
+selector1, selector2, selector3 {
+    property: value;
+}
+*/
