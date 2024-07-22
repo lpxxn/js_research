@@ -1,0 +1,77 @@
+@import 'base';// 不需要有_也不需要有.scss
+
+$version: '1.0.0';
+/* 项目的版本：#{$version} 查看编译后的css会是相应的数据 */
+
+$name: 'info';
+
+$theme: dark;
+
+body {
+  @if $theme == dark {
+    background-color: black;
+  } @else if $theme == light {
+    background-color: white;
+  } @else {
+    background-color: yellow;
+  }
+}
+
+.alert-#{$name} {
+  padding: 15px;
+}
+
+$use-prefix: false;
+.rounded {
+  @if $use-prefix {
+    -webkit-border-radius: 5px;
+    -moz-border-radius:5px;
+  }
+  border-radius: 5px;
+}
+
+
+//  --------for
+
+$columns: 4;
+
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    width: 100% / $columns * $i;
+  }
+}
+
+// -------each
+
+$icons: success error warning;
+@each $icon in $icons {
+  .alert-#{$icon} {
+    background-image: url('~@/assets/#{$icon}.png');
+  }
+}
+
+
+// -------while
+$i: 6;
+@while $i > 0 {
+  .col-#{$i} {
+    width: 100% / $columns * $i;
+  }
+  $i: $i - 2;
+}
+
+// -------@function
+$colors: (light: #ffffff, dark: #000000);
+
+@function color($key) {
+  @if not map-has-key($map: $colors, $key: $key){ 
+      // @warn "The key #{$key} is not in the map $colors";
+       @error "The key #{$key} is not in the map $colors";
+  }
+  @return map-get($colors, $key);
+}
+
+body .box {
+  background-color: color(light);
+  color: color(aaaa);
+}
