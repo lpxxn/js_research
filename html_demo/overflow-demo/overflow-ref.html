@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    div {
+      /* width: 200px;
+      height: 100px;
+      padding: 20px;
+      border: 8px solid red;
+      background: azure; */
+      margin: 10px;
+    }
+
+    .cross-browser-ellipsis {
+      width: 300px;
+      /* 设置一个固定宽度 */
+      max-height: 4.5em;
+      /* 行高 * 行数 */
+      line-height: 1.5em;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cross-browser-ellipsis::after {
+      content: "...";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background: white;
+      /* 与背景色相同 */
+      padding-left: 3px;
+    }
+
+
+    .multi-line-ellipsis {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 200px;
+      height: 60px;
+      /* Adjust the height if necessary */
+      line-height: 20px;
+      /* Adjust based on your text size */
+      /* border: 1px solid #ccc; */
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    文本溢出处理
+
+    white-space 属性设置空白处理，属性值nowrap，表示设置文本不换行，属性值pre，表示保留空格
+
+    overflow 属性是溢出处理，属性值hidden表示溢出部分隐藏
+
+    text-overflow 属性设置文本溢出处理，属性值ellipsis表示文本溢出部分显示...
+
+    注意：上面的三个属性值缺一不可
+
+    ``` css
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    ```
+  </div>
+
+  <div class="cross-browser-ellipsis">
+    文本溢出处理
+
+    white-space 属性设置空白处理，属性值nowrap，表示设置文本不换行，属性值pre，表示保留空格
+
+    overflow 属性是溢出处理，属性值hidden表示溢出部分隐藏
+
+    text-overflow 属性设置文本溢出处理，属性值ellipsis表示文本溢出部分显示...
+
+    注意：上面的三个属性值缺一不可
+
+    ``` css
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    ```
+  </div>
+
+  <div class="multi-line-ellipsis">
+    文本溢出处理
+
+    white-space 属性设置空白处理，属性值nowrap，表示设置文本不换行，属性值pre，表示保留空格
+
+    overflow 属性是溢出处理，属性值hidden表示溢出部分隐藏
+
+    text-overflow 属性设置文本溢出处理，属性值ellipsis表示文本溢出部分显示...
+
+    注意：上面的三个属性值缺一不可
+
+    ``` css
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    ```
+  </div>
+
+  <div class="multi-line-ellipsis">
+    This is a very long text that will be truncated with an ellipsis if it exceeds the number of allowed lines in the
+    container. The content here is long enough to demonstrate this effect over multiple lines.
+  </div>
+</body>
+
+</html>

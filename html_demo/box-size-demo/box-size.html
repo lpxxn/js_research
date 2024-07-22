@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
         div {
-            width: 160px;
-            height: 80px;
+            width: 200px;
+            height: 100px;
             padding: 20px;
             border: 8px solid red;
             background: azure;
@@ -18,12 +19,28 @@
 
         .border-box {
             box-sizing: border-box;
+            /* overflow: scroll; */
+            /* overflow: auto; */
         }
     </style>
 </head>
+
 <body>
-<div class="content-box"> Content box</div>
-<br>
-<div class="border-box">Border box</div>
+    <div class="content-box"> 默认值是content-box，是内容盒子，表示width和height的空间全部给内容</div>
+    <br>
+    <div class="border-box">属性值border-box，是边框盒子，盒子的边框和内边距产生的空间从width和height里面扣除</div>
+    <p style="margin-top: 100px;">
+        在 HTML 和 CSS 中，padding 和 margin 的颜色处理是不同的：
+        Padding 颜色：
+        Padding 是元素内容和边框之间的空间。
+        Padding 的颜色与元素的背景颜色相同。
+        可以通过设置元素的 background-color 来改变 padding 的颜色。
+        Margin 颜色：
+        Margin 是元素外部的空间，位于边框之外。
+        Margin 通常是透明的，显示的是父元素或页面背景的颜色。
+        不能直接为 margin 设置颜色。
+        示例：
+    </p>
 </body>
+
 </html>
