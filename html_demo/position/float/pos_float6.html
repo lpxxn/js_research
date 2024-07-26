@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .news {
+      background-color: gray;
+      border: solid 1px black;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .news img {
+      /* float: left; */
+    }
+
+    .news p {
+      /* float: right; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="news">
+    <img src="img.png" />
+    <p>
+      display: flex; 是 CSS 中的一个重要属性值，用于创建弹性布局容器。它有以下特点和用途：
+
+      含义：
+      将一个元素设置为弹性容器（flex container），其直接子元素自动成为弹性项目（flex items）。
+
+      主要用途：
+
+      轻松创建行或列布局
+      控制子元素的对齐和分布
+      动态调整元素大小
+      实现响应式设计
+      常见应用：
+
+      导航栏布局
+      等高列布局
+      垂直居中内容
+      灵活的网格系统
+      主要特性：
+
+      主轴（main axis）和交叉轴（cross axis）概念
+      可以控制项目的增长和收缩
+      可以改变项目的显示顺序
+      display 属性还有许多其他值，每个都有特定的用途：
+
+      display: block;
+
+      元素显示为块级元素
+      独占一行，可设置宽高
+      display: inline;
+
+      元素显示为内联元素
+      不独占一行，不可设置宽高
+      display: inline-block;
+
+      结合了 inline 和 block 的特性
+      不独占一行，但可设置宽高
+      display: grid;
+
+      创建网格布局容器
+      用于复杂的二维布局
+      display: table;
+
+      元素表现为表格
+      用于创建类似表格的布局
+      display: none;
+
+      完全隐藏元素，不占用空间
+      display: contents;
+
+      使元素本身不生成盒子，但其子元素正常显示
+      display: flex-inline;
+
+      创建内联级别的弹性容器
+      display: list-item;
+
+      元素表现为列表项
+      display: run-in;
+
+      根据上下文决定是内联还是块级
+      display: flow-root;
+
+      创建新的块级格式化上下文
+      这些不同的 display 值提供了多样化的布局选项，可以根据具体需求选择合适的值来实现所需的布局效果。
+    </p>
+  </div>
+  <div style="height: 1000px; background-color: red; margin: 20px"></div>
+</body>
+
+</html>
