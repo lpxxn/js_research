@@ -22,7 +22,7 @@ console.log(3 in arr) // false
 //但是,需要注意的是,in 操作符不会区分数组的稀疏区域。即使数组中某些索引位置没有值,in 操作符也会将其视为存在。
 console.log('-------------------in-----------------------')
 arr = [10, , 30]
-
+console.log('arr', arr)
 console.log(0 in arr) // 输出 true
 console.log(1 in arr) // 输出 true
 console.log(2 in arr) // 输出 true
