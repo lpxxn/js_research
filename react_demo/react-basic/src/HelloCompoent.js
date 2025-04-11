@@ -59,10 +59,14 @@ class HelloComponent extends React.Component {
       <br />
       <button onClick={this.errHandler}>有问题的方法</button>
       <br />
+      <button onClick={this.errHandler2}>修复方法1</button>
       <button onClick={() => { this.errHandler() }}>修复方法2</button>
       <br />
       <p>下面是受控组件的知识点</p>
     </div>)
+  }
+  errHandler2 = () => {
+    console.log(this)
   }
   errHandler () {
     console.log(this)// this 为undefine this.SetState就会报错, class默认是strit模式，this 指向的undefine,所以需要手动绑定/箭头函数 ES6文档

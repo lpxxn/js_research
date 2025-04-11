@@ -18,11 +18,11 @@ function Example () {
   }, [])
 
   useEffect(() => {
-    console.log("[count], 第一次渲染后执行，count变化后执行")
+    console.log(`[count], 第一次渲染后执行，count变化后执行 ${count}`)
   }, [count])
 
   useEffect(() => {
-    console.log("[name]")
+    console.log("[name], 没有变化不执行，变化后执行")
   }, [name])
 
   useEffect(() => {
