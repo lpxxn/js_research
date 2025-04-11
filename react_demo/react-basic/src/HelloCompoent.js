@@ -84,12 +84,26 @@ class HelloComponent extends React.Component {
 }
 
 function HelloComponent2 () {
+
+  const [parentValue, setParentValue] = React.useState('初始数据')
+
+  const handleChildClick = (value) => {
+    setParentValue(value)
+  }
+
   return (
     <div>
+      <p>组件</p>
       <Hello />
       <HelloComponent />
       <InputElement />
       <InputElement2 />
+      <br />
+      <p>联动受控组件 parentValue: {parentValue}</p>
+
+      <LinkedInputElement
+        value={parentValue}
+        onChange={(value) => handleChildClick(value)} placeholder="请输入内容" />
     </div>
   )
 }
@@ -142,3 +156,42 @@ class InputElement2 extends React.Component {
   }
 }
 export default HelloComponent2
+
+
+// 添加一个新的受控组件，接收props并实现联动
+class LinkedInputElement extends React.Component {
+  state = {
+    inputValue: this.props.value || ''
+  }
+
+  // 当props变化时更新内部状态
+  componentDidUpdate (prevProps) {
+    if (prevProps.value !== this.props.value && this.props.value !== this.state.inputValue) {
+      this.setState({ inputValue: this.props.value })
+    }
+  }
+
+  handleChange = (e) => {
+    const newValue = e.target.value
+    this.setState({ inputValue: newValue })
+
+    // 调用父组件传入的onChange函数，实现联动
+    if (this.props.onChange) {
+      this.props.onChange(newValue)
+    }
+  }
+
+  render () {
+    return (
+      <div>
+        <p>联动受控组件: {this.state.inputValue}</p>
+        <input
+          type="text"
+          value={this.state.inputValue}
+          onChange={this.handleChange}
+          placeholder={this.props.placeholder || "请输入内容"}
+        />
+      </div>
+    )
+  }
+}
